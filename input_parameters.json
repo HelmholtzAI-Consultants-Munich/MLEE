@@ -1,0 +1,102 @@
+{
+    "path_name": "./data/",
+    "file_name": "N2Nworkingdataset20230724update.csv",
+    "columns_to_keep": {
+        "num": [
+            "basis_age",
+            "a_ses_incgw",
+            "a_alk_rein",
+            "a_gpaq_ptotal",
+            "a_gpaq_p16",
+            "a_packyears",
+            "a_apo_count",
+            "a_anthro_bmi_eig",
+            "g_pm25_ela_10",
+            "g_no2_ela_10",
+            "g_o3_ela_10",
+            "g_bc_ela_10",
+            "g_t_min_hmg_g_17",
+            "g_t_max_hmg_g_17",
+            "g_t_sd_hmg_g_17",
+            "g_rh_hmg_g_17",
+            "g_ndvi_dlr_g_16"
+        ],
+        "cat": [
+            "basis_sex",
+            "basis_uort",
+            "a_ses_mig_status",
+            "a_ses_partner",
+            "a_ses_househ",
+            "a_ses_isced97_level",
+            "a_alk_konsum",
+            "a_smok_stat_noint",
+            "a_ses_work",
+            "hypertens",
+            "cvd",
+            "g_dgu_eu_m_u1"
+        ]
+    },
+    "binary_columns": [
+            "basis_sex",
+            "a_ses_mig_status",
+            "a_ses_partner",
+            "cvd"
+        ],
+    "target": "hypertens",
+    "filters": {
+        "age": ["basis_age", [null, null]],
+        "bmi": ["a_anthro_bmi_eig", [null, null]],
+        "sex": ["basis_sex", null]
+    },
+    "test_size": 0.2,
+    "validation_size": 0.1,
+    "feature_stratification": [
+        "basis_sex",
+        "hypertens",
+        "g_dgu_eu_m_u1"
+    ],
+    "features_to_drop": ["basis_uort", "g_dgu_eu_m_u1"],
+    "imputation_strategy": "iterative",
+    "models": {
+        "RandomForest": {
+            "n_estimators": [200, 500, 1000],
+            "max_depth": [2, 5, 10],
+            "max_features": [2, "sqrt", "log2"],
+            "bootstrap": [true]
+        },
+        "LogisticRegression": {
+            "penalty": ["l1", "l2", "elasticnet", null],
+            "C": [0.1, 1.0, 10.0], "solver": ["saga"],
+            "max_iter": [100, 200, 500],
+            "l1_ratio": [0.2, 0.5, 0.7]
+        },
+        "SVMClassifier": {
+            "kernel": ["linear", "rbf", "sigmoid"],
+            "C": [0.1, 1.0, 10.0],
+            "gamma": ["scale", "auto", 0.1, 1.0]},
+        "KNN": {
+            "n_neighbors": [3, 5, 7, 10],
+            "metric": ["manhattan"]
+        },
+        "XGBoost": {
+            "max_depth": [3, 5, 7],
+            "learning_rate": [0.1, 0.01, 0.001],
+            "n_estimators": [100, 200, 500],
+            "subsample": [0.8, 1.0],
+            "colsample_bytree": [0.8, 1.0],
+            "gamma": [0, 1, 5]
+        },
+        "NeuralNetwork": {
+            "module__num_layers": [1, 2, 3],
+            "module__num_units": [10, 20],
+            "module__dropout": [0.0, 0.1, 0.2],
+            "optimizer__lr": [0.001, 0.01, 0.05], 
+            "optimizer__nesterov": [false, true]
+        }
+    },
+    "n_boot_iterations": 1000,
+    "selection_metric": "accuracy",
+    "selection_cutoff": 0.9,
+    "shap_output_prob": true,
+    "subset_percentage": 1.0
+}

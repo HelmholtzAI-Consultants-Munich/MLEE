@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+
+# Jupyter
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Environments
+.env
+.venv/
+env/
+venv/
+ENV/
+
+# IDEs
+.vscode/
+.idea/
+.continue/
+
+# Build / packaging
+build/
+dist/
+*.egg-info/
+
+# Tests / cache
+.pytest_cache/
+.coverage
+htmlcov/
+.cache/
+
+# Logs and jobs
+*.log
+*.job
+
+# Reports: keep folder, ignore generated reports
+reports/*
+!reports/.gitkeep
+!reports/README.md
+
+# Data: keep folder, ignore user data
+data/*
+Data/*
+!data/.gitkeep
+!data/README.md
+
+# Archives / large files
+*.7z
+*.zip

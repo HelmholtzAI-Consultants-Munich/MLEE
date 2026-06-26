@@ -1,0 +1,12 @@
+{
+    "target": "hypertens",
+    "test_size": 0.2,
+    "validation_size": 0.1,
+    "feature_stratification": [
+        "basis_sex",
+        "basis_age",
+        "basis_uort",
+        "hypertens"
+    ],
+    "subset_percentage": 1.0
+}
