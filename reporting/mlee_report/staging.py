@@ -5,6 +5,11 @@ from auxiliary.turbopath import turbopath
 
 
 def _chownfix(input_folder: str):
+    # Windows does not support os.getuid() or chown, so nothing to do.
+    if os.name == "nt":
+        return
+
+    # On Linux/macOS, fix ownership (mainly for Docker-created files)
     # TODO when running in docker think about supplying this UID
     current_uid = str(os.getuid())
     rightCorrection = "chown", "-R", current_uid, input_folder
