@@ -1,17 +1,45 @@
 # MLEE
-This repo contains a Machine Learning Framwork for Environmental Epidiemology (MLEE)
+This repo contains a Machine Learning Framework for Environmental Epidemiology (MLEE)
 
-## Description
-The environment has major impacts on human health, and particularly adverse effects are projected to increase within urban environments. Therefore, sophisticated geostatistical and data science models are urgently needed to better reflect real-life exposures and understand the long-term impact of environmental factors on human health. By joining the complementary expertise and data of HMGU and DLR, these impacts are targeted exemplary in the domain of noise.\
+## Overview
+Environmental factors have a major impact on human health, and these adverse effects are expected to become more pronounced in urban environments. Therefore, sophisticated geostatistical and data science models are urgently needed to better reflect real-life exposures and understand the long-term impact of environmental factors on human health. By combining the complementary expertise and data of Helmholtz Munich and DLR, this project focuses on noise as a representative use case.\
 First, spatial limitations of state-of-the-art noise maps are tackled using a unique noise mapping approach based on generous data augmentation and deep convolutional networks. Then, this data will be linked to socio-economic and demographic information from more than 200.000 participants of the German national cohort (NAKO) to identify vulnerable clusters in terms of noise and neighborhood factors for the risk of hypertension by exploring distribution regression networks. Then, these clusters will be predicted for the whole of Germany.\
 Finally, this network will be enhanced by auxiliary individual socioeconomic and health data to investigate the interplay of noise levels, neighborhood characteristics, and individual risk factors for hypertension.
-We therefore apply and advance machine learning techniques considering interpretable approaches. The innovative AI/ML methods developed within this project shall serve as case studies for the modeling of additional health endpoints as well as additional environmental parameters like air pollution, temperature/heat waves, and relative humidity as these data are currently only available with strong limitations.\
+We therefore apply machine learning techniques considering interpretable approaches. The AI/ML methods developed within this project shall serve as case studies for the modeling of additional health endpoints as well as additional environmental parameters like air pollution, temperature/heat waves, and relative humidity as these data are currently only available with strong limitations.\
 
+## Quick start
 
-## Cloning the repository (Only required once)
-If you want to clone our repo to any device you have to follow a similar procedure but only once per device. Notice that on the cluster the file system is shared with all nodes, including login or compute nodes, so you don't have to do it more than once.
+If you already have **Git** and **Conda** installed, you can set up and run the project with the following commands:
 
-1.  generate and add ssh key to your agent
+```bash
+git clone git@github.com:HelmholtzAI-Consultants-Munich/MLEE.git
+cd MLEE
+
+conda env create --file environment.yaml
+conda activate MLEE
+
+python main.py
+```
+
+If this is your first time setting up the project or you need to configure SSH, Conda, or the data archive, continue with the detailed installation instructions below.
+
+## Prerequisites
+
+Before setting up the project, ensure you have the following installed:
+
+- **Git** for cloning the repository.
+- **Conda** (Miniconda recommended, Anaconda also supported).
+
+We recommend using **Conda 23.10 or newer**, as newer versions include the `libmamba` dependency solver, which can significantly reduce environment creation time.
+
+If you do not have Git or Conda installed, follow the installation instructions in the next section.
+
+## Installation
+
+### Clone the repository (Only required once)
+If you want to clone our repo to any device, follow a similar procedure but only once per device. Notice that on the cluster the file system is shared with all nodes, including login or compute nodes, so you don't have to do it more than once.
+
+1.  generate and add SSH key to your agent
 First, follow the procedure in the following link to generate and add an SSH key to your GitHub account.
 https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
 \
@@ -38,9 +66,9 @@ Also regarding the "Adding your SSH key to the ssh-agent" section, you can use t
     	port 443
     ```
 2. Adding a new SSH key to your GitHub account
-   Follow the procedure in the following link to add the ssk key you just created to your GitHub account:
+   Follow the procedure in the following link to add the SSH key you just created to your GitHub account:
    https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account
-3. Now, to clone the repo you have to first navigate to a folder that you want. After entering the following command in the terminal a MLEE folder will be created within the current path and all the files will be downloaded within the MLEE folder:
+3. Navigate to a folder where you want to clone the repository. After entering the following command in the terminal a MLEE folder will be created within the current path and all the files will be downloaded within the MLEE folder:
 ```
 git clone git@github.com:HelmholtzAI-Consultants-Munich/MLEE.git
 ```
@@ -48,13 +76,66 @@ git clone git@github.com:HelmholtzAI-Consultants-Munich/MLEE.git
 Alternatively, you can add a personal token and use HTTPS.
 https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens
 
-## DATA and its Privacy
+
+### Install Conda
+
+#### Windows and macOS
+
+Install the latest version of **Miniconda** (recommended) or **Anaconda** for your operating system and processor architecture.
+
+- Miniconda: https://www.anaconda.com/download/success
+- Anaconda: https://www.anaconda.com/download
+
+#### Linux and cluster
+
+1. Create a `tools` directory in your home folder (if it does not already exist):
+
+```bash
+mkdir ~/tools
+cd ~/tools
+```
+
+2. Create a temporary directory for the installation:
+
+```bash
+mkdir tmpconda
+cd ~/tools/tmpconda
+```
+
+3. Download Miniconda:
+
+```bash
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+```
+
+4. Install Miniconda:
+
+```bash
+TMPDIR=~/tools/tmpconda bash Miniconda3-latest-Linux-x86_64.sh -u
+```
+
+Accept the license agreement and complete the installation.
+
+5. Configure your environment:
+
+```bash
+chmod +x ~/miniconda3/bin/*
+chmod +x ~/miniconda3/envs
+export LD_LIBRARY_PATH=~/miniconda3/lib:$LD_LIBRARY_PATH
+export PATH=~/miniconda3/bin:$PATH
+source ~/miniconda3/etc/profile.d/conda.sh
+~/miniconda3/bin/conda init bash
+```
+
+Log out and log in again after the installation.
+
+## Data and privacy
 Since our NAKO data requires strict privacy, you have to either keep it as an encrypted volume file or archive file. To be able to use it on any OS, here we suggest an encrypted 7z file called data.7z with your self-chosen password for protection. On any operating system (OS), you can achieve this by encrypting the "data" folder after you transfer and store the data file, e.g. "N2Nworkingdataset20230724update.csv" in there. 
 
-### How to create an archive file from a folder ()
+### How to create an archive file from a folder
 **Important:** It is only required once after you transferred the data to the data folder.
 
-#### installing 7zip on Linux and macOS console/terminal:
+#### Installing 7zip on Linux and macOS console/terminal:
 The cluster already has the 7z installed and you don't need to install this software, i.e. you can skip this section. Otherwise, if you need to install 7z on your local PC then follow the procedure below:
 
 1. First you have to download .tar.xz version with the correct Architecture, e.g. 64-bit Linux x86-64 or macOS (arm64 / x86-64) from the link: https://www.7-zip.org/download.html
@@ -78,11 +159,10 @@ After installing 7zip if it is unavailable on your system, navigate to the MLEE 
 -p option makes sure to encrypt the file. It will ask you to give a password for the file.
 
 ### How to extract the previously made archive file from a folder
-**Important:** This needs to be done each time you want to run the pipeline.
+**Important:** Repeat this step each time you run the pipeline.
 
 #### Extracting 7z file on Linux (including the cluster's OS) or macOS terminal
-To extract you have to enter the following command:
-follows:
+To extract the archive, run:
 ```
 7z x data.7z
 ```
@@ -101,106 +181,115 @@ or delete the csv if you are in data folder:
 ```
 rm -rf *.csv
 ```
-## installing conda
-#### installation on Windows or macOS
-Navigate to https://www.anaconda.com/download and download the correct version of anaconda software based on your processor's architecture, specially for the case of intel or M processors.
 
-#### installation on the cluster or Linux 
-1) Start with creating “tools” folder under your home directory: This will help to organize your home directory and store all the necessary files under one directory. If you already have tools directory, you do not need to create one, otherwise you may use mkdir command as follows (Be sure that you are sitting on your personal home folder (/home/<usergroup>/<username>)
-```
-mkdir tools
-```
-and then, get into the tools directory with the following command ;
-```
- cd ~/tools
-```
-2) Create necessary folders under tools directory:
+## Environment setup
 
-Create tmpconda folder under tools folder
-```
-mkdir tmpconda
-```
-3) Navigate to tools/tmpconda folder and
-```
-cd ~/tools/tmpconda
-```
-4) download miniconda with the following command : 
-```
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-```
-5) now make sure conda knows the temporary directory and install with bash:
-```
-TMPDIR=~/tools/tmpconda bash Miniconda3-latest-Linux-x86_64.sh -u
-```
-Please read license agreement and accept it, HIT enter key, then exit.
+### Verify the Conda installation
 
-6) Give Required Permissions
-```
-chmod +x ~/miniconda3/bin/*
-chmod +x ~/miniconda3/envs
-export LD_LIBRARY_PATH=~/miniconda3/lib:$LD_LIBRARY_PATH
-export PATH=~/miniconda3/bin:$PATH
-PATH=$PATH:$HOME/miniconda3/bin
-source ~/miniconda3/etc/profile.d/conda.sh
-~/miniconda3/bin/conda init bash
-```
----> After installation, log out and log in again for the change to make effect.
+Check your Conda version:
 
- 5) Verify the Installation and setup
-``` 
-export LD_LIBRARY_PATH=~/miniconda3/lib:$LD_LIBRARY_PATH
-export PATH=~/miniconda3/bin:$PATH
-PATH=$PATH:$HOME/miniconda3/bin
-conda -V
+```bash
+conda --version
 ```
 
-#### Creating environment:
-6) After cloning this repository, navigate to MLEE folder, and create the conda environment ```MLEE``` by default from the environment.yaml file as follows (You can change the name of the conda environment by changing the name in this yaml file):
-- Local machine:
+Conda **23.10 or newer** is recommended. Older versions may use the slower `classic` dependency solver.
+
+Check the configured solver:
+
+```bash
+conda config --show solver
 ```
+
+The recommended output is:
+
+```text
+solver: libmamba
+```
+
+If the solver is `classic`, switch to `libmamba`:
+
+```bash
+conda config --set solver libmamba
+```
+
+Verify the change:
+
+```bash
+conda config --show solver
+```
+
+If `libmamba` is unavailable, update Conda before continuing:
+
+```bash
+conda update -n base conda
+```
+
+### Create the environment
+
+Navigate to the root of the cloned repository.
+
+**Local machine**
+
+```bash
 conda env create --file environment.yaml
 ```
-- Cluster:
-```
+
+**Cluster**
+
+```bash
 conda env create --file environment_cluster.yaml
 ```
 
-#### Activating environment:
-then activate the conda environment
-```
+### Activate the environment
+
+```bash
 conda activate MLEE
 ```
 
-#### Updating environment:
-For each time there has been some new development in the code and if there is an error that tells a package is missing then please run the following to update your environment( notice here that the environment.yaml has a name argument inside that should be the exact same name as when you created the environment if you have changed before from default to something else):
-- Local machine:
-```
+If you chose a different environment name, replace `MLEE` with the name you specified.
+
+### Update the environment
+
+If the environment definition has changed, update your existing environment.
+
+**Local machine**
+
+```bash
 conda env update --file environment.yaml --prune
 ```
-- Cluster:
-```
+
+**Cluster**
+
+```bash
 conda env update --file environment_cluster.yaml --prune
 ```
 
-#### Deleting and reinstalling environment:
-sometimes updating the environment doesn't resolve conflict issues, then remove the environment and install it again:
-Delete:
-```
+### Recreate the environment
+
+If updating does not resolve dependency conflicts, remove and recreate the environment.
+
+Delete the environment:
+
+```bash
 conda remove --name MLEE --all
 ```
-Reinstall: Please follow the same procedure as creating the environment.
+
+Then recreate it by following the **Create the environment** section above.
+
+> **Note:** Creating the environment may take several minutes because Conda must resolve and download package dependencies. If it remains on **"Solving environment"** for an unusually long time, verify that you are using Conda 23.10 or newer with the `libmamba` solver enabled.
+
 
 ## Usage
 This section contains the instructions to run the pipeline.\
 
-### Run in your laptop
+### Local machine
 After the MLEE environment is activated you can just type the following command to run the pipeline:
 ```
 python main.py
 ```
 This will execute the whole pipeline with the input parameter you can set in the input_parameters.json.
 
-### Run on the cluster
+### Cluster
 1. First you have to log in to the cluster:
 ```
 ssh username@hpc-build01
@@ -221,7 +310,7 @@ ssh user.name@@hpc-submit03gui
 	```
  	squeue -u user.name
  	```
- 	replacing user.name with your username. Also the normal terminal output logs are now stored in slurm_log folder with output as output_job_allocated_number.job and errors in error_job_allocated_number.job respectively.
+ 	replacing user.name with your username. Standard output and error logs are stored in the slurm_log directory.
 
 	b. request a compute resource on some compute node:
 	by entering this command in the cluster terminal you will get same amount of resource as the sbatch script but also you get an interactive session that helps with 	editing and running the code:
@@ -241,14 +330,8 @@ python main.py
 ## Outputs
 The result of each run will be saved as HTML report within the reports folder. Each experiment is saved in a different folder, where the name contains the timestamp of the run and a unique identifier. Each report will  be also saved as an archived zip file for ease of transfer. Also, the outputs are saved in the output folder as well as the resources in the reports folders under the experiment's folder. 
 
-## Revision:
-### Installation details on windows machines (configuring ssh and cloning) TODO
-1. First we created ssh key as described https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
-2. New-Item for creating this config file
-3. notepad.exe for config
 
-
-## Input Parameters Description
+## Input Parameters
 - ```path_name```: Path to the directory containing the dataset, default: "./data/". <br />
 - ```file_name```: Name of the dataset file., default: "N2Nworkingdataset20230724update.csv". <br />
 - ```columns_to_keep```: Dictionary containing the list of numerical ("num") and categorical ("cat") columns to retain.  <br />
@@ -270,3 +353,20 @@ The result of each run will be saved as HTML report within the reports folder. E
 - ```selection_cutoff```: Float number representing the P-value threshold above which the best-ranked model is automatically selected. <br />
 - ```shap_output_prob```: Boolean indicating the output space of the SHAP values. If `true`, SHAP values are computed in probability space; if `false`, they are computed in log-odds space.
 - ```subset_percentage```: Float number representing the proportion of the dataset to use, (default: 1.0, i.e. the full dataset. <br />
+
+## Contributing
+
+Contributions are welcome! If you would like to improve the project, please follow these guidelines:
+
+1. Create a new branch for your changes.
+2. Keep commits focused and use descriptive commit messages.
+3. Update the documentation if your changes affect the installation, usage, or outputs.
+4. Ensure the pipeline runs successfully before submitting your changes.
+
+When your work is ready, open a pull request and provide a clear description of:
+- the motivation for the changes,
+- the main modifications,
+- any additional steps required to test them.
+
+If you are unsure about a proposed change, feel free to open an issue or start a discussion before implementing it.
+
