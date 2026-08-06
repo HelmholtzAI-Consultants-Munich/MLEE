@@ -2,14 +2,13 @@
 This repo contains a Machine Learning Framework for Environmental Epidemiology (MLEE)
 
 ## Overview
-Environmental factors have a major impact on human health, and these adverse effects are expected to become more pronounced in urban environments. Therefore, sophisticated geostatistical and data science models are urgently needed to better reflect real-life exposures and understand the long-term impact of environmental factors on human health. By combining the complementary expertise and data of Helmholtz Munich and DLR, this project focuses on noise as a representative use case.\
-First, spatial limitations of state-of-the-art noise maps are tackled using a unique noise mapping approach based on generous data augmentation and deep convolutional networks. Then, this data will be linked to socio-economic and demographic information from more than 200.000 participants of the German national cohort (NAKO) to identify vulnerable clusters in terms of noise and neighborhood factors for the risk of hypertension by exploring distribution regression networks. Then, these clusters will be predicted for the whole of Germany.\
-Finally, this network will be enhanced by auxiliary individual socioeconomic and health data to investigate the interplay of noise levels, neighborhood characteristics, and individual risk factors for hypertension.
-We therefore apply machine learning techniques considering interpretable approaches. The AI/ML methods developed within this project shall serve as case studies for the modeling of additional health endpoints as well as additional environmental parameters like air pollution, temperature/heat waves, and relative humidity as these data are currently only available with strong limitations.\
+MLEE is a publicly available, generalizable, and user-friendly machine learning (ML) framework designed to support the analysis of environmental and health data. The framework was developed to address the current lack of reproducible ML workflows in environmental epidemiology, where applications of ML remain relatively limited despite the growing availability of high-resolution environmental exposure data and large population cohorts.
+MLEE framework integrates data preprocessing, multiple machine learning classifiers, performance evaluation, and model explainability methods. MLEE enables researchers to identify and rank key individual, environmental, and neighborhood-level determinants of binary health outcomes while maintaining reproducibility throughout the process.
+By combining predictive modeling with interpretable AI approaches, MLEE helps researchers explore complex, high-dimensional datasets and uncover important drivers of health outcomes. The framework is designed to complement traditional epidemiological methods and facilitate the use of ML in environmental epidemiology.
 
 ## Quick start
 
-If you already have **Git** and **Conda** installed, you can set up and run the project with the following commands:
+If you already have **Git** and **Conda** installed, navigate to the directory where you want to clone the repository and run:
 
 ```bash
 git clone git@github.com:HelmholtzAI-Consultants-Munich/MLEE.git
@@ -226,7 +225,7 @@ conda update -n base conda
 
 ### Create the environment
 
-Navigate to the root of the cloned repository.
+Make sure you are in the root directory of the cloned `MLEE` repository.
 
 **Local machine**
 
@@ -280,7 +279,7 @@ Then recreate it by following the **Create the environment** section above.
 
 
 ## Usage
-This section contains the instructions to run the pipeline.\
+This section contains the instructions to run the framework.
 
 ### Local machine
 After the MLEE environment is activated you can just type the following command to run the pipeline:
@@ -333,7 +332,7 @@ The result of each run will be saved as HTML report within the reports folder. E
 
 ## Input Parameters
 - ```path_name```: Path to the directory containing the dataset, default: "./data/". <br />
-- ```file_name```: Name of the dataset file., default: "N2Nworkingdataset20230724update.csv". <br />
+- ```file_name```: Name of the dataset file <br />
 - ```columns_to_keep```: Dictionary containing the list of numerical ("num") and categorical ("cat") columns to retain.  <br />
 - ```binary_columns```: List with categorical features that are binary and do not need to be one hot encoded. <br />
 - ```target```: Name of the target variable, default: "hypertens". <br />
