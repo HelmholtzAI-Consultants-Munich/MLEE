@@ -128,6 +128,14 @@ source ~/miniconda3/etc/profile.d/conda.sh
 
 Log out and log in again after the installation.
 
+### Recommended development environment (optional)
+
+If you do not already have a preferred code editor or IDE, we recommend using **Visual Studio Code (VS Code)** for local development.
+
+Download VS Code from:
+
+https://code.visualstudio.com/
+
 ## Data and privacy
 Since our NAKO data requires strict privacy, you have to either keep it as an encrypted volume file or archive file. To be able to use it on any OS, here we suggest an encrypted 7z file called data.7z with your self-chosen password for protection. On any operating system (OS), you can achieve this by encrypting the "data" folder after you transfer and store the data file, e.g. "N2Nworkingdataset20230724update.csv" in there. 
 
