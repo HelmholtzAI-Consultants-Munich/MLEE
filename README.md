@@ -133,33 +133,33 @@ conda --version
 	
    Check the configured solver:
    
-	```bash
+```bash
 	conda config --show solver
-	```
+```
 	
 The recommended output is:
 	
-	```text
-	solver: libmamba
-	```
+```text
+solver: libmamba
+```
 	
 OPTIONAL: If the solver is `classic`, switch to `libmamba`:
 
-	```bash
-	conda config --set solver libmamba
-	```
+```bash
+conda config --set solver libmamba
+```
 	
 Verify the change:
 
-	```bash
-	conda config --show solver
-	```
+```bash
+conda config --show solver
+```
 	
 OPTIONAL: If `libmamba` is unavailable, update Conda before continuing:
 
-	```bash
-	conda update -n base conda
-	```
+```bash
+conda update -n base conda
+```
 
 #### 3.3.2 Create the environment
 Make sure you are in the root directory of the cloned `MLEE` repository.
