@@ -108,8 +108,7 @@ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 ```bash
 TMPDIR=~/tools/tmpconda bash Miniconda3-latest-Linux-x86_64.sh -u
 ```
-
-&nbsp;&nbsp;&nbsp;&nbsp; Accept the license agreement and complete the installation.
+Accept the license agreement and complete the installation.
 
 5. Configure your environment:
 
@@ -121,8 +120,7 @@ export PATH=~/miniconda3/bin:$PATH
 source ~/miniconda3/etc/profile.d/conda.sh
 ~/miniconda3/bin/conda init bash
 ```
-
-&nbsp;&nbsp;&nbsp;&nbsp; Log out and log in again after the installation.
+Log out and log in again after the installation.
 
 
 ### 3.3 Environment setup
@@ -171,13 +169,13 @@ conda update -n base conda
 
 Make sure you are in the root directory of the cloned `MLEE` repository.
 
-**Local machine**
+##### 3.3.2.1 Local machine
 
 ```bash
 conda env create --file environment.yaml
 ```
 
-**Cluster**
+##### 3.3.2.2 Cluster
 
 ```bash
 conda env create --file environment_cluster.yaml
@@ -195,13 +193,13 @@ If you chose a different environment name, replace `MLEE` with the name you spec
 
 If the environment definition has changed, update your existing environment.
 
-**Local machine**
+##### 3.3.4.1 Local machine
 
 ```bash
 conda env update --file environment.yaml --prune
 ```
 
-**Cluster**
+##### 3.3.4.2 Cluster**
 
 ```bash
 conda env update --file environment_cluster.yaml --prune
