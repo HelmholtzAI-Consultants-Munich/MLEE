@@ -132,6 +132,7 @@ Install the latest version of **Miniconda** (recommended) or **Anaconda** for yo
    Conda **23.10 or newer** is recommended. Older versions may use the slower `classic` dependency solver.
 	
    Check the configured solver:
+   
 	```bash
 	conda config --show solver
 	```
@@ -143,16 +144,19 @@ The recommended output is:
 	```
 	
 OPTIONAL: If the solver is `classic`, switch to `libmamba`:
+
 	```bash
 	conda config --set solver libmamba
 	```
 	
 Verify the change:
+
 	```bash
 	conda config --show solver
 	```
 	
 OPTIONAL: If `libmamba` is unavailable, update Conda before continuing:
+
 	```bash
 	conda update -n base conda
 	```
@@ -224,13 +228,13 @@ This will execute the whole pipeline with the input parameter you can set in the
 
 #### 4.1.2 Cluster
 1. First you have to log in to the cluster:
-```
-ssh username@hpc-build01
-```
-or 
-```
-ssh user.name@@hpc-submit03gui
-```
+	```
+	ssh username@hpc-build01
+	```
+	or 
+	```
+	ssh user.name@@hpc-submit03gui
+	```
 2. The cloning procedure on the cluster is the same as on any device and it is done once.
 3. For the first time you need to transfer csv file to the folder named "data" and also encrypt it as mentioned above. Afterwards, each time you log in you just need to extract the data.7z and you delete the "data" folder once you don't need it to keep it secure, as mentioned in the previous sections.
 4. There are two ways to run the code on the cluster, one is to submit a job via a slurm script and the second is to request an interactive session/job and run it on the assigned compute node.\
@@ -247,17 +251,17 @@ ssh user.name@@hpc-submit03gui
 
 	b. request a compute resource on some compute node:
 	by entering this command in the cluster terminal you will get same amount of resource as the sbatch script but also you get an interactive session that helps with 	editing and running the code:
-```
-salloc -J N2N_pipeline -c 16 -p cpu_p --qos=cpu_normal --mem=128G -t 1-00:00:00
-```
-once you got to the compute node you then then activate the conda environment
-```
-conda activate MLEE
-```
-then run the code the same as local computers with:
-```
-python main.py
-```
+	```
+	salloc -J N2N_pipeline -c 16 -p cpu_p --qos=cpu_normal --mem=128G -t 1-00:00:00
+	```
+	once you got to the compute node you then then activate the conda environment
+	```
+	conda activate MLEE
+	```
+	then run the code the same as local computers with:
+	```
+	python main.py
+	```
 
 ### 4.2 Input Parameters
 - ```path_name```: Path to the directory containing the dataset, default: "./data/". <br />
