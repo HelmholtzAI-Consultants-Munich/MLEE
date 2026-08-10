@@ -28,20 +28,11 @@ If this is your first time setting up the project or you need to configure SSH, 
 
 Before setting up the project, ensure you have the following installed:
 
+- Code editor. If you do not already have a preferred code editor or IDE, we recommend using **Visual Studio Code (VS Code)** which can be downloaded here: https://code.visualstudio.com/
 - **Git** for cloning the repository.
-- **Conda** (Miniconda recommended, Anaconda also supported).
+- **Conda** (Miniconda recommended, Anaconda also supported). We recommend using **Conda 23.10 or newer**, as newer versions include the `libmamba` dependency solver, which can significantly reduce environment creation time.
 
-We recommend using **Conda 23.10 or newer**, as newer versions include the `libmamba` dependency solver, which can significantly reduce environment creation time.
-
-#### Recommended development environment (optional)
-
-If you do not already have a preferred code editor or IDE, we recommend using **Visual Studio Code (VS Code)** for local development.
-
-Download VS Code from: https://code.visualstudio.com/
-
-
-
-If you do not have Git or Conda installed, follow the installation instructions in the next section.
+If you do not have Git or Conda installed, follow the installation instructions in the next section (3.2.2).
 
 ### 3.2 Installation
 
@@ -51,7 +42,7 @@ You only need to clone the repository once per local device. On the cluster, the
 
 ##### Recommended: clone using HTTPS
 
-Navigate to the directory where you want to store the project and run:
+Navigate to the local directory where you want to store the project and run:
 
 ```bash
 git clone https://github.com/HelmholtzAI-Consultants-Munich/MLEE.git
@@ -118,7 +109,7 @@ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 TMPDIR=~/tools/tmpconda bash Miniconda3-latest-Linux-x86_64.sh -u
 ```
 
-Accept the license agreement and complete the installation.
+   Accept the license agreement and complete the installation.
 
 5. Configure your environment:
 
@@ -131,7 +122,7 @@ source ~/miniconda3/etc/profile.d/conda.sh
 ~/miniconda3/bin/conda init bash
 ```
 
-Log out and log in again after the installation.
+    Log out and log in again after the installation.
 
 
 ### 3.3 Environment setup
