@@ -109,7 +109,7 @@ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 TMPDIR=~/tools/tmpconda bash Miniconda3-latest-Linux-x86_64.sh -u
 ```
 
-   Accept the license agreement and complete the installation.
+&nbsp;&nbsp;&nbsp;&nbsp; Accept the license agreement and complete the installation.
 
 5. Configure your environment:
 
@@ -122,7 +122,7 @@ source ~/miniconda3/etc/profile.d/conda.sh
 ~/miniconda3/bin/conda init bash
 ```
 
-    Log out and log in again after the installation.
+&nbsp;&nbsp;&nbsp;&nbsp; Log out and log in again after the installation.
 
 
 ### 3.3 Environment setup
