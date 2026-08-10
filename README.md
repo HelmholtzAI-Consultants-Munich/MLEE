@@ -134,7 +134,7 @@ conda --version
    Check the configured solver:
    
 ```bash
-	conda config --show solver
+conda config --show solver
 ```
 	
 The recommended output is:
