@@ -45,13 +45,12 @@ If you do not have Git or Conda installed, follow the installation instructions 
 You only need to clone the repository once per local device. If you intend to run MLEE on the cluster, the file system is shared across login and compute nodes, so the repository also only needs to be cloned once.
 
 ##### Recommended: clone using HTTPS
-
 Navigate to the local directory where you want to store the project and run:
 
-```bash
-git clone https://github.com/HelmholtzAI-Consultants-Munich/MLEE.git
-cd MLEE
-```
+	```bash
+	git clone https://github.com/HelmholtzAI-Consultants-Munich/MLEE.git
+	cd MLEE
+	```
 
 ##### Optional: clone using SSH
 
@@ -88,34 +87,29 @@ Install the latest version of **Miniconda** (recommended) or **Anaconda** for yo
 ##### 3.2.2.2 Linux and cluster
 
 1. Create a `tools` directory in your home folder (if it does not already exist):
-
-```bash
-mkdir ~/tools
-cd ~/tools
-```
+	```bash
+	mkdir ~/tools
+	cd ~/tools
+	```
 
 2. Create a temporary directory for the installation:
-
-```bash
-mkdir tmpconda
-cd ~/tools/tmpconda
-```
+	```bash
+	mkdir tmpconda
+	cd ~/tools/tmpconda
+	```
 
 3. Download Miniconda:
-
-```bash
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-```
+	```bash
+	wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+	```
 
 4. Install Miniconda:
-
 	```bash
 	TMPDIR=~/tools/tmpconda bash Miniconda3-latest-Linux-x86_64.sh -u
 	```
 	Accept the license agreement and complete the installation.
 
 5. Configure your environment:
-
 	```bash
 	chmod +x ~/miniconda3/bin/*
 	chmod +x ~/miniconda3/envs
@@ -130,47 +124,33 @@ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 ### 3.3 Environment setup
 
 #### 3.3.1 Verify the Conda installation
-
 Open your code editor (VS Code or similar) and check your Conda version by typing in the terminal (Command Prompt (CMD) terminal recommended):
-
-```bash
-conda --version
-```
-
-Conda **23.10 or newer** is recommended. Older versions may use the slower `classic` dependency solver.
-
-Check the configured solver:
-
-```bash
-conda config --show solver
-```
-
-The recommended output is:
-
-```text
-solver: libmamba
-```
-
-OPTIONAL: If the solver is `classic`, switch to `libmamba`:
-
 	```bash
-	conda config --set solver libmamba
+	conda --version
 	```
-
-Verify the change:
-
+	Conda **23.10 or newer** is recommended. Older versions may use the slower `classic` dependency solver.
+	Check the configured solver:
 	```bash
 	conda config --show solver
 	```
-
-OPTIONAL: If `libmamba` is unavailable, update Conda before continuing:
-
+	The recommended output is:
+	```text
+	solver: libmamba
+	```
+	OPTIONAL: If the solver is `classic`, switch to `libmamba`:
+	```bash
+	conda config --set solver libmamba
+	```
+	Verify the change:
+	```bash
+	conda config --show solver
+	```
+	OPTIONAL: If `libmamba` is unavailable, update Conda before continuing:
 	```bash
 	conda update -n base conda
 	```
 
 #### 3.3.2 Create the environment
-
 Make sure you are in the root directory of the cloned `MLEE` repository.
 
 ##### 3.3.2.1 Local machine
