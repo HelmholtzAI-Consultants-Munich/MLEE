@@ -1,14 +1,14 @@
 # MLEE
 This repo contains a Machine Learning Framework for Environmental Epidemiology (MLEE)
 
-## Overview
-MLEE is a publicly available, generalizable, and user-friendly machine learning (ML) framework designed to support the analysis of environmental and health data. The framework was developed to address the current lack of reproducible ML workflows in environmental epidemiology, where applications of ML remain relatively limited despite the growing availability of high-resolution environmental exposure data and large population cohorts.
-MLEE framework integrates data preprocessing, multiple machine learning classifiers, performance evaluation, and model explainability methods. MLEE enables researchers to identify and rank key individual, environmental, and neighborhood-level determinants of binary health outcomes while maintaining reproducibility throughout the process.
-By combining predictive modeling with interpretable AI approaches, MLEE helps researchers explore complex, high-dimensional datasets and uncover important drivers of health outcomes. The framework is designed to complement traditional epidemiological methods and facilitate the use of ML in environmental epidemiology.
+## 1. Overview
+MLEE is a publicly available, generalizable, and user-friendly machine learning (ML) framework designed to support the analysis of environmental and health data. The framework was developed to address the current lack of reproducible ML workflows in environmental epidemiology, where applications of ML remain limited despite the growing availability of high-resolution environmental exposure data and large population cohorts.
+The MLEE framework integrates data preprocessing, multiple machine learning classifiers, performance evaluation, and model explainability methods. MLEE enables researchers to identify and rank key individual, environmental, and neighborhood-level determinants of binary health outcomes while maintaining reproducibility throughout the process.
+By combining predictive modeling with interpretable ML approaches, MLEE helps researchers explore complex, high-dimensional datasets and uncover important drivers of health outcomes. The framework is designed to complement traditional epidemiological methods and facilitate the use of ML in environmental epidemiology.
 
-## Quick start
+## 2. Quick start
 
-If you already have **Git** and **Conda** installed, navigate to the directory where you want to clone the repository and run:
+If you already have **Git** and **Conda** installed, navigate to your local directory where you want to clone the repository and run:
 
 ```bash
 git clone https://github.com/HelmholtzAI-Consultants-Munich/MLEE.git
@@ -20,9 +20,11 @@ conda activate MLEE
 python main.py
 ```
 
+## 3. Detailed installation instruction
+
 If this is your first time setting up the project or you need to configure SSH, Conda, or the data archive, continue with the detailed installation instructions below.
 
-## Prerequisites
+### 3.1 Prerequisites
 
 Before setting up the project, ensure you have the following installed:
 
@@ -31,15 +33,23 @@ Before setting up the project, ensure you have the following installed:
 
 We recommend using **Conda 23.10 or newer**, as newer versions include the `libmamba` dependency solver, which can significantly reduce environment creation time.
 
+#### Recommended development environment (optional)
+
+If you do not already have a preferred code editor or IDE, we recommend using **Visual Studio Code (VS Code)** for local development.
+
+Download VS Code from: https://code.visualstudio.com/
+
+
+
 If you do not have Git or Conda installed, follow the installation instructions in the next section.
 
-## Installation
+### 3.2 Installation
 
-### Clone the repository
+#### 3.2.1 Clone the MLEE repository
 
-You only need to clone the repository once per device. On the cluster, the file system is shared across login and compute nodes, so the repository only needs to be cloned once.
+You only need to clone the repository once per local device. On the cluster, the file system is shared across login and compute nodes, so the repository only needs to be cloned once.
 
-#### Recommended: clone using HTTPS
+##### Recommended: clone using HTTPS
 
 Navigate to the directory where you want to store the project and run:
 
@@ -48,7 +58,7 @@ git clone https://github.com/HelmholtzAI-Consultants-Munich/MLEE.git
 cd MLEE
 ```
 
-#### Optional: clone using SSH
+##### Optional: clone using SSH
 
 If you prefer to use SSH, first configure an SSH key for GitHub by following the official GitHub instructions:
 
@@ -71,16 +81,16 @@ Host github.com
     Port 443
 ```
 
-### Install Conda
+#### 3.2.2 Install Conda
 
-#### Windows and macOS
+##### 3.2.2.1 Windows and macOS
 
 Install the latest version of **Miniconda** (recommended) or **Anaconda** for your operating system and processor architecture.
 
 - Miniconda: https://www.anaconda.com/download/success
 - Anaconda: https://www.anaconda.com/download
 
-#### Linux and cluster
+##### 3.2.2.2 Linux and cluster
 
 1. Create a `tools` directory in your home folder (if it does not already exist):
 
@@ -123,18 +133,10 @@ source ~/miniconda3/etc/profile.d/conda.sh
 
 Log out and log in again after the installation.
 
-### Recommended development environment (optional)
 
-If you do not already have a preferred code editor or IDE, we recommend using **Visual Studio Code (VS Code)** for local development.
+### 3.3 Environment setup
 
-Download VS Code from:
-
-https://code.visualstudio.com/
-
-
-## Environment setup
-
-### Verify the Conda installation
+#### 3.3.1 Verify the Conda installation
 
 Check your Conda version:
 
@@ -174,7 +176,7 @@ If `libmamba` is unavailable, update Conda before continuing:
 conda update -n base conda
 ```
 
-### Create the environment
+#### 3.3.2 Create the environment
 
 Make sure you are in the root directory of the cloned `MLEE` repository.
 
@@ -190,7 +192,7 @@ conda env create --file environment.yaml
 conda env create --file environment_cluster.yaml
 ```
 
-### Activate the environment
+#### 3.3.3 Activate the environment
 
 ```bash
 conda activate MLEE
@@ -198,7 +200,7 @@ conda activate MLEE
 
 If you chose a different environment name, replace `MLEE` with the name you specified.
 
-### Update the environment
+#### 3.3.4 OPTIONAL: Update the environment
 
 If the environment definition has changed, update your existing environment.
 
@@ -214,7 +216,7 @@ conda env update --file environment.yaml --prune
 conda env update --file environment_cluster.yaml --prune
 ```
 
-### Recreate the environment
+#### 3.3.5 OPTIONAL: Recreate the environment
 
 If updating does not resolve dependency conflicts, remove and recreate the environment.
 
@@ -228,70 +230,19 @@ Then recreate it by following the **Create the environment** section above.
 
 > **Note:** Creating the environment may take several minutes because Conda must resolve and download package dependencies. If it remains on **"Solving environment"** for an unusually long time, verify that you are using Conda 23.10 or newer with the `libmamba` solver enabled.
 
-## Data and privacy
-Since our NAKO data requires strict privacy, you have to either keep it as an encrypted volume file or archive file. To be able to use it on any OS, here we suggest an encrypted 7z file called data.7z with your self-chosen password for protection. On any operating system (OS), you can achieve this by encrypting the "data" folder after you transfer and store the data file, e.g. "N2Nworkingdataset20230724update.csv" in there. 
 
-### How to create an archive file from a folder
-**Important:** It is only required once after you transferred the data to the data folder.
 
-#### Installing 7zip on Linux and macOS console/terminal:
-The cluster already has the 7z installed and you don't need to install this software, i.e. you can skip this section. Otherwise, if you need to install 7z on your local PC then follow the procedure below:
-
-1. First you have to download .tar.xz version with the correct Architecture, e.g. 64-bit Linux x86-64 or macOS (arm64 / x86-64) from the link: https://www.7-zip.org/download.html
-2. Extract the downloaded file and this will create a folder that has 7z or 7zz binary. Navigate to the created folder.
-3. In case the binary file is called 7zz then rename it to 7z for ease of use otherwise in the next sections you have to change 7z with 7zz in the commands.
-4. Copy the 7z binary to your binary path with the following command:
-    ```
-    sudo cp 7z /usr/local/bin/
-    ```
-5. To check whether it is already recognized type
-    ```
-    which 7z /usr/local/bin/
-    ```
-    the output should be /usr/local/bin/7z or otherwise restart the terminal.
-   
-#### Create 7z file on Linux (including the cluster's OS) or macOS terminal after installing 7z
-After installing 7zip if it is unavailable on your system, navigate to the MLEE folder where you cloned the repository. Then create the data.7z archive file in the MLEE folder as follows:
-```
-7z a -p data.7z data/
-```
--p option makes sure to encrypt the file. It will ask you to give a password for the file.
-
-### How to extract the previously made archive file from a folder
-**Important:** Repeat this step each time you run the pipeline.
-
-#### Extracting 7z file on Linux (including the cluster's OS) or macOS terminal
-To extract the archive, run:
-```
-7z x data.7z
-```
-The last command creates a folder called "data" and extracts the content into the created folder.
-
-#### Create or extract archive file on Windows after installing 7z
-Since 7z on Windows has a GUI you can use that to create or extract the archive file. However, there is also a similar process for creating 7z file using the command line interface (CLI).
-
-#### **Important note regarding the privacy**
-Please delete the csv file after usage. You can extract the encrypted file (data.7z) stored in the MLEE folder any time you need it. 
-You can either do this by deleting the "data" folder if you are in MLEE folder:
-```
-rm -rf data/
-```
-or delete the csv if you are in data folder:
-```
-rm -rf *.csv
-```
-
-## Usage
+## 4. Usage
 This section contains the instructions to run the framework.
 
-### Local machine
+#### 4.1.1 Local machine
 After the MLEE environment is activated you can just type the following command to run the pipeline:
 ```
 python main.py
 ```
 This will execute the whole pipeline with the input parameter you can set in the input_parameters.json.
 
-### Cluster
+#### 4.1.2 Cluster
 1. First you have to log in to the cluster:
 ```
 ssh username@hpc-build01
@@ -328,7 +279,7 @@ then run the code the same as local computers with:
 python main.py
 ```
 
-## Input Parameters
+### 4.2 Input Parameters
 - ```path_name```: Path to the directory containing the dataset, default: "./data/". <br />
 - ```file_name```: Name of the dataset file <br />
 - ```columns_to_keep```: Dictionary containing the list of numerical ("num") and categorical ("cat") columns to retain.  <br />
@@ -351,10 +302,10 @@ python main.py
 - ```shap_output_prob```: Boolean indicating the output space of the SHAP values. If `true`, SHAP values are computed in probability space; if `false`, they are computed in log-odds space.
 - ```subset_percentage```: Float number representing the proportion of the dataset to use, (default: 1.0, i.e. the full dataset. <br />
 
-## Outputs
+### 4.3 Outputs
 The result of each run will be saved as HTML report within the reports folder. Each experiment is saved in a different folder, where the name contains the timestamp of the run and a unique identifier. Each report will  be also saved as an archived zip file for ease of transfer. Also, the outputs are saved in the output folder as well as the resources in the reports folders under the experiment's folder. 
 
-## Contributing
+## 5. Contributing
 
 Contributions are welcome! If you would like to improve the project, please follow these guidelines:
 
