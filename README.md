@@ -47,10 +47,10 @@ You only need to clone the repository once per local device. If you intend to ru
 ##### Recommended: clone using HTTPS
 Navigate to the local directory where you want to store the project and run:
 
-	```bash
-	git clone https://github.com/HelmholtzAI-Consultants-Munich/MLEE.git
-	cd MLEE
-	```
+```bash 
+git clone https://github.com/HelmholtzAI-Consultants-Munich/MLEE.git
+cd MLEE
+```
 
 ##### Optional: clone using SSH
 
