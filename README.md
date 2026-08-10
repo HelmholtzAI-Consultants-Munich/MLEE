@@ -6,6 +6,7 @@ MLEE is a publicly available, generalizable, and user-friendly machine learning 
 The MLEE framework integrates data preprocessing, multiple machine learning classifiers, performance evaluation, and model explainability methods. MLEE enables researchers to identify and rank key individual, environmental, and neighborhood-level determinants of binary health outcomes while maintaining reproducibility throughout the process.
 By combining predictive modeling with interpretable ML approaches, MLEE helps researchers explore complex, high-dimensional datasets and uncover important drivers of health outcomes. The framework is designed to complement traditional epidemiological methods and facilitate the use of ML in environmental epidemiology.
 
+
 ## 2. Quick start
 
 If you already have **Git** and **Conda** installed, navigate to your local directory where you want to clone the repository and run:
@@ -20,9 +21,11 @@ conda activate MLEE
 python main.py
 ```
 
+
 ## 3. Detailed installation instruction
 
 If this is your first time setting up the project or you need to configure SSH, Conda, or the data archive, continue with the detailed installation instructions below.
+
 
 ### 3.1 Prerequisites
 
@@ -34,11 +37,12 @@ Before setting up the project, ensure you have the following installed:
 
 If you do not have Git or Conda installed, follow the installation instructions in the next section (3.2.2).
 
+
 ### 3.2 Installation
 
 #### 3.2.1 Clone the MLEE repository
 
-You only need to clone the repository once per local device. On the cluster, the file system is shared across login and compute nodes, so the repository only needs to be cloned once.
+You only need to clone the repository once per local device. If you intend to run MLEE on the cluster, the file system is shared across login and compute nodes, so the repository also only needs to be cloned once.
 
 ##### Recommended: clone using HTTPS
 
@@ -105,29 +109,29 @@ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 
 4. Install Miniconda:
 
-```bash
-TMPDIR=~/tools/tmpconda bash Miniconda3-latest-Linux-x86_64.sh -u
-```
-Accept the license agreement and complete the installation.
+	```bash
+	TMPDIR=~/tools/tmpconda bash Miniconda3-latest-Linux-x86_64.sh -u
+	```
+	Accept the license agreement and complete the installation.
 
 5. Configure your environment:
 
-```bash
-chmod +x ~/miniconda3/bin/*
-chmod +x ~/miniconda3/envs
-export LD_LIBRARY_PATH=~/miniconda3/lib:$LD_LIBRARY_PATH
-export PATH=~/miniconda3/bin:$PATH
-source ~/miniconda3/etc/profile.d/conda.sh
-~/miniconda3/bin/conda init bash
-```
-Log out and log in again after the installation.
+	```bash
+	chmod +x ~/miniconda3/bin/*
+	chmod +x ~/miniconda3/envs
+	export LD_LIBRARY_PATH=~/miniconda3/lib:$LD_LIBRARY_PATH
+	export PATH=~/miniconda3/bin:$PATH
+	source ~/miniconda3/etc/profile.d/conda.sh
+	~/miniconda3/bin/conda init bash
+	```
+	Log out and log in again after the installation.
 
 
 ### 3.3 Environment setup
 
 #### 3.3.1 Verify the Conda installation
 
-Check your Conda version:
+Open your code editor (VS Code or similar) and check your Conda version by typing in the terminal (Command Prompt (CMD) terminal recommended):
 
 ```bash
 conda --version
@@ -147,23 +151,23 @@ The recommended output is:
 solver: libmamba
 ```
 
-If the solver is `classic`, switch to `libmamba`:
+OPTIONAL: If the solver is `classic`, switch to `libmamba`:
 
-```bash
-conda config --set solver libmamba
-```
+	```bash
+	conda config --set solver libmamba
+	```
 
 Verify the change:
 
-```bash
-conda config --show solver
-```
+	```bash
+	conda config --show solver
+	```
 
-If `libmamba` is unavailable, update Conda before continuing:
+OPTIONAL: If `libmamba` is unavailable, update Conda before continuing:
 
-```bash
-conda update -n base conda
-```
+	```bash
+	conda update -n base conda
+	```
 
 #### 3.3.2 Create the environment
 
@@ -229,7 +233,7 @@ After the MLEE environment is activated you can just type the following command 
 ```
 python main.py
 ```
-This will execute the whole pipeline with the input parameter you can set in the input_parameters.json.
+This will execute the whole pipeline with the input parameter you can set in the input_parameters.json (see 4.2).
 
 #### 4.1.2 Cluster
 1. First you have to log in to the cluster:
