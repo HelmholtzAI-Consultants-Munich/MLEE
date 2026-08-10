@@ -124,28 +124,35 @@ Install the latest version of **Miniconda** (recommended) or **Anaconda** for yo
 ### 3.3 Environment setup
 
 #### 3.3.1 Verify the Conda installation
-Open your code editor (VS Code or similar) and check your Conda version by typing in the terminal (Command Prompt (CMD) terminal recommended):
+  Open your code editor (VS Code or similar) and check your Conda version by typing in the terminal (Command Prompt (CMD) terminal recommended):
+	
 	```bash
 	conda --version
 	```
-	Conda **23.10 or newer** is recommended. Older versions may use the slower `classic` dependency solver.
-	Check the configured solver:
+   Conda **23.10 or newer** is recommended. Older versions may use the slower `classic` dependency solver.
+	
+   Check the configured solver:
 	```bash
 	conda config --show solver
 	```
-	The recommended output is:
+	
+The recommended output is:
+	
 	```text
 	solver: libmamba
 	```
-	OPTIONAL: If the solver is `classic`, switch to `libmamba`:
+	
+OPTIONAL: If the solver is `classic`, switch to `libmamba`:
 	```bash
 	conda config --set solver libmamba
 	```
-	Verify the change:
+	
+Verify the change:
 	```bash
 	conda config --show solver
 	```
-	OPTIONAL: If `libmamba` is unavailable, update Conda before continuing:
+	
+OPTIONAL: If `libmamba` is unavailable, update Conda before continuing:
 	```bash
 	conda update -n base conda
 	```
