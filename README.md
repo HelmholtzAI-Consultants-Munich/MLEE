@@ -126,9 +126,9 @@ Install the latest version of **Miniconda** (recommended) or **Anaconda** for yo
 #### 3.3.1 Verify the Conda installation
   Open your code editor (VS Code or similar) and check your Conda version by typing in the terminal (Command Prompt (CMD) terminal recommended):
 	
-	```bash
-	conda --version
-	```
+```bash
+conda --version
+```
    Conda **23.10 or newer** is recommended. Older versions may use the slower `classic` dependency solver.
 	
    Check the configured solver:
