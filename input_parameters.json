@@ -1,61 +1,35 @@
 {
     "path_name": "./data/",
-    "file_name": "N2Nworkingdataset20230724update.csv",
+    "file_name": "YOURDATASET.csv",
     "columns_to_keep": {
         "num": [
-            "basis_age",
-            "a_ses_incgw",
-            "a_alk_rein",
-            "a_gpaq_ptotal",
-            "a_gpaq_p16",
-            "a_packyears",
-            "a_apo_count",
-            "a_anthro_bmi_eig",
-            "g_pm25_ela_10",
-            "g_no2_ela_10",
-            "g_o3_ela_10",
-            "g_bc_ela_10",
-            "g_t_min_hmg_g_17",
-            "g_t_max_hmg_g_17",
-            "g_t_sd_hmg_g_17",
-            "g_rh_hmg_g_17",
-            "g_ndvi_dlr_g_16"
+            "age",
+            "bmi",
+            "pm25",
+            "ndvi"
         ],
         "cat": [
-            "basis_sex",
-            "basis_uort",
-            "a_ses_mig_status",
-            "a_ses_partner",
-            "a_ses_househ",
-            "a_ses_isced97_level",
-            "a_alk_konsum",
-            "a_smok_stat_noint",
-            "a_ses_work",
-            "hypertens",
-            "cvd",
-            "g_dgu_eu_m_u1"
+            "sex",
+            "study_center",
+            "hypertension"
         ]
     },
     "binary_columns": [
-            "basis_sex",
-            "a_ses_mig_status",
-            "a_ses_partner",
-            "cvd"
+            "sex"
         ],
-    "target": "hypertens",
+    "target": "hypertension",
     "filters": {
-        "age": ["basis_age", [null, null]],
-        "bmi": ["a_anthro_bmi_eig", [null, null]],
-        "sex": ["basis_sex", null]
+        "age": ["age", [null, null]],
+        "bmi": ["bmi", [null, null]],
+        "sex": ["sex", null]
     },
     "test_size": 0.2,
     "validation_size": 0.1,
     "feature_stratification": [
-        "basis_sex",
-        "hypertens",
-        "g_dgu_eu_m_u1"
+        "sex",
+        "hypertension"
     ],
-    "features_to_drop": ["basis_uort", "g_dgu_eu_m_u1"],
+    "features_to_drop": ["study_center"],
     "imputation_strategy": "iterative",
     "models": {
         "RandomForest": {
