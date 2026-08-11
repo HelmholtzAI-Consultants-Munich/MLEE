@@ -145,7 +145,7 @@ conda --version
 ```bash
 conda init cmd.exe
 ```
-Afterward, restart VS Code and open a new terminal session (Command Prompt or **cmd**). 
+Afterward, restart VS Code and open a new terminal session (Command Prompt (CMD) terminal recommended). 
 	
    Conda **23.10 or newer** is recommended. Older versions may use the slower `classic` dependency solver.
 	
