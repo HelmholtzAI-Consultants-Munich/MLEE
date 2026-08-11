@@ -7,10 +7,11 @@ The MLEE framework integrates data preprocessing, multiple machine learning clas
 By combining predictive modeling with interpretable ML approaches, MLEE helps researchers explore complex, high-dimensional datasets and uncover important drivers of health outcomes. The framework is designed to complement traditional epidemiological methods and facilitate the use of ML in environmental epidemiology.
 
 
-## 2. Quick start
+## 2. Quick start <!-- to my knowledge, this quick start is only for local machine set up. perhaps we should also create a quick start for cluster -->
 
-If you already have **Git** and **Conda** installed, navigate to your local directory where you want to clone the repository and run:
+If you already have **Git** and **Conda** installed, within your terminal, navigate to your local directory where you want to clone the MLEE repository and run:
 
+##### 2.1 Windows and macOS
 ```bash
 git clone https://github.com/HelmholtzAI-Consultants-Munich/MLEE.git
 cd MLEE
@@ -18,9 +19,17 @@ cd MLEE
 conda env create --file environment.yaml
 conda activate MLEE
 
-python main.py
+python main.py <!-- I think we should remove this step--we don't need them to run the code yet. I would reccomend directing them to step 4. i.e., "Once this step is complete, you can proceed to **step 4**. -->
 ```
 
+##### 2.2 Linux and cluster <!-- to my knowledge, this may be the quick start for cluster -->
+ ```bash
+git clone https://github.com/HelmholtzAI-Consultants-Munich/MLEE.git
+cd MLEE
+
+conda env create --file environment_cluster.yaml
+conda activate MLEE
+```
 
 ## 3. Detailed installation instruction
 
@@ -32,13 +41,12 @@ If this is your first time setting up the project or you need to configure SSH, 
 Before setting up the project, ensure you have the following installed:
 
 - Code editor. If you do not already have a preferred code editor or IDE, we recommend using **Visual Studio Code (VS Code)** which can be downloaded here: https://code.visualstudio.com/
-- **Git** for cloning the repository.
-- **Conda** (Miniconda recommended, Anaconda also supported). We recommend using **Conda 23.10 or newer**, as newer versions include the `libmamba` dependency solver, which can significantly reduce environment creation time.
+- **Git** for cloning the repository, which can be downloaded here: https://git-scm.com/install/
+  
+**Conda** (Miniconda recommended, Anaconda also supported) is also required. We recommend using **Conda 23.10 or newer**, as newer versions include the `libmamba` dependency solver, which can significantly reduce environment creation time. If you do not have Conda installed, follow the installation instructions in the next section **(step 3.2.2)**.
 
-If you do not have Git or Conda installed, follow the installation instructions in the next section (3.2.2).
 
-
-### 3.2 Installation
+### 3.2 Installation  <!-- I think it is slightly confusing to talk about Conda installation, clone the MLEE repository, and then provide instructions to clone Conda after. can we move this Installation step after Conda installation? -->
 
 #### 3.2.1 Clone the MLEE repository
 
@@ -76,6 +84,8 @@ Host github.com
 ```
 
 #### 3.2.2 Install Conda
+
+If you already have **Conda** installed (Miniconda or Anaconda, version 23.10 or newer is recommended), you can proceed directly to **step 3.3**. Otherwise, follow **step 3.2.2.1** for Windows and macOS installation or **3.2.2.2** for Linux and cluster installation.
 
 ##### 3.2.2.1 Windows and macOS
 
@@ -162,7 +172,7 @@ conda update -n base conda
 ```
 
 #### 3.3.2 Create the environment
-Make sure you are in the root directory of the cloned `MLEE` repository.
+Remain in the terminal of your code editor. Make sure you are in the root directory of the cloned `MLEE` repository. Follow instructions for either the local machine **3.3.2.1** or cluster **3.3.2.2**.
 
 ##### 3.3.2.1 Local machine
 
@@ -188,13 +198,13 @@ If you chose a different environment name, replace `MLEE` with the name you spec
 
 If the environment definition has changed, update your existing environment.
 
-##### 3.3.4.1 Local machine
+##### 3.3.4.1 Local machine <!-- is this equivalent to Mac and OS? -->
 
 ```bash
 conda env update --file environment.yaml --prune
 ```
 
-##### 3.3.4.2 Cluster**
+##### 3.3.4.2 Cluster** <!-- is this equivalent to Linux and Cluster? -->
 
 ```bash
 conda env update --file environment_cluster.yaml --prune
@@ -210,7 +220,7 @@ Delete the environment:
 conda remove --name MLEE --all
 ```
 
-Then recreate it by following the **Create the environment** section above.
+Then recreate it by following the **Create the environment** section above **(3.2.2)**).
 
 > **Note:** Creating the environment may take several minutes because Conda must resolve and download package dependencies. If it remains on **"Solving environment"** for an unusually long time, verify that you are using Conda 23.10 or newer with the `libmamba` solver enabled.
 
@@ -219,14 +229,21 @@ Then recreate it by following the **Create the environment** section above.
 ## 4. Usage
 This section contains the instructions to run the framework.
 
-#### 4.1.1 Local machine
+<!-- I would switch the order to change the input parameters file first, so people don't try to run the pipeline beforehand. For example, I propose the following section. Note that if this is included, we do have to change the order around a little bit
+#### 4.1.1 Preparing Input Parameters
+Open the **input_parameters.json** file in your preferred code editor. Using the outline of inputs below as a guide, update the file to reflect your dataset and variables.
+
+<insert the Input Parameters 2.2 section here>
+-->
+
+#### 4.1.1 Local machine <!-- is this equivalent to Mac and OS? -->
 After the MLEE environment is activated you can just type the following command to run the pipeline:
 ```
 python main.py
 ```
 This will execute the whole pipeline with the input parameter you can set in the input_parameters.json (see 4.2).
 
-#### 4.1.2 Cluster
+#### 4.1.2 Cluster <!-- is this equivalent to Linux and Cluster? -->
 1. First you have to log in to the cluster:
 	```
 	ssh username@hpc-build01
@@ -286,7 +303,7 @@ This will execute the whole pipeline with the input parameter you can set in the
 - ```shap_output_prob```: Boolean indicating the output space of the SHAP values. If `true`, SHAP values are computed in probability space; if `false`, they are computed in log-odds space.
 - ```subset_percentage```: Float number representing the proportion of the dataset to use, (default: 1.0, i.e. the full dataset. <br />
 
-### 4.3 Outputs
+### 4.3 Outputs <!-- generally speaking, I think it would be helpful to explain a bit more where to find each of the outputs. It doesn't have to have a lot of detail, but a bit more would be helpful -->
 The result of each run will be saved as HTML report within the reports folder. Each experiment is saved in a different folder, where the name contains the timestamp of the run and a unique identifier. Each report will  be also saved as an archived zip file for ease of transfer. Also, the outputs are saved in the output folder as well as the resources in the reports folders under the experiment's folder. 
 
 ## 5. Contributing
