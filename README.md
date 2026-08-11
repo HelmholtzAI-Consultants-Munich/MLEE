@@ -237,21 +237,39 @@ Then recreate it by following the **Create the environment** section above **(3.
 ## 4. Usage
 This section contains the instructions to run the framework.
 
-<!-- I would switch the order to change the input parameters file first, so people don't try to run the pipeline beforehand. For example, I propose the following section. Note that if this is included, we do have to change the order around a little bit
-#### 4.1.1 Preparing Input Parameters
+#### 4.1 Preparing Input Parameters
 Open the **input_parameters.json** file in your preferred code editor. Using the outline of inputs below as a guide, update the file to reflect your dataset and variables.
 
-<insert the Input Parameters 2.2 section here>
--->
+- ```path_name```: Path to the directory containing the dataset, default: "./data/". <br />
+- ```file_name```: Name of the dataset file <br />
+- ```columns_to_keep```: Dictionary containing the list of numerical ("num") and categorical ("cat") columns to retain.  <br />
+- ```binary_columns```: List with categorical features that are binary and do not need to be one hot encoded. <br />
+- ```target```: Name of the target variable, default: "hypertens". <br />
+- ```filters```: Dictionary specifying filters for age, BMI, and sex.
+	- Keys correspond to the feature names.
+	- If not specified, no filtering is applied.
+	- For age and BMI, null is interpreted as 0 (lower bound) or ∞ (upper bound).
+	- Options for sex: "M" or "m" (men), "W" or "w" (women).
+- ```test_size```: Float number representing the proportion of the dataset used as the test set. <br />
+- ```validation_size```: Float number representing proportion of the dataset used as the validation set. <br />
+- ```feature_stratification```: List of features used for stratified train-test splitting. <br />
+- ```features_to_drop```: List of features to drop after stratification (i.e., used for splitting but not for training). <br />
+- ```imputation_strategy```: String representing the imputation technique to apply, options: "iterative", "mean". <br />
+- ```models```: Dictionary containing the models to evaluate and their corresponding grid of hyperparameters. <br />
+- ```n_boot_iterations```: Integer number of bootstrap iterations performed during model evaluation. <br />
+- ```selection_metric```: String containing the metric used for model selection, options: "accuracy", "precision", "recall", "f1-score". <br />
+- ```selection_cutoff```: Float number representing the P-value threshold above which the best-ranked model is automatically selected. <br />
+- ```shap_output_prob```: Boolean indicating the output space of the SHAP values. If `true`, SHAP values are computed in probability space; if `false`, they are computed in log-odds space.
+- ```subset_percentage```: Float number representing the proportion of the dataset to use, (default: 1.0, i.e. the full dataset. <br />
 
-#### 4.1.1 Local machine <!-- is this equivalent to Mac and OS? -->
-After the MLEE environment is activated you can just type the following command to run the pipeline:
+#### 4.2.1 Local machine <!-- is this equivalent to Mac and OS? -->
+After the MLEE environment is activated and you have updated the input parameters, you can just type the following command to run the pipeline:
 ```
 python main.py
 ```
-This will execute the whole pipeline with the input parameter you can set in the input_parameters.json (see 4.2).
+This will execute the whole pipeline with the input parameters you can set in the input_parameters.json (see 4.1).
 
-#### 4.1.2 Cluster <!-- is this equivalent to Linux and Cluster? -->
+#### 4.2.2 Cluster <!-- is this equivalent to Linux and Cluster? -->
 1. First you have to log in to the cluster:
 	```
 	ssh username@hpc-build01
@@ -287,29 +305,6 @@ This will execute the whole pipeline with the input parameter you can set in the
 	```
 	python main.py
 	```
-
-### 4.2 Input Parameters
-- ```path_name```: Path to the directory containing the dataset, default: "./data/". <br />
-- ```file_name```: Name of the dataset file <br />
-- ```columns_to_keep```: Dictionary containing the list of numerical ("num") and categorical ("cat") columns to retain.  <br />
-- ```binary_columns```: List with categorical features that are binary and do not need to be one hot encoded. <br />
-- ```target```: Name of the target variable, default: "hypertens". <br />
-- ```filters```: Dictionary specifying filters for age, BMI, and sex.
-	- Keys correspond to the feature names.
-	- If not specified, no filtering is applied.
-	- For age and BMI, null is interpreted as 0 (lower bound) or ∞ (upper bound).
-	- Options for sex: "M" or "m" (men), "W" or "w" (women).
-- ```test_size```: Float number representing the proportion of the dataset used as the test set. <br />
-- ```validation_size```: Float number representing proportion of the dataset used as the validation set. <br />
-- ```feature_stratification```: List of features used for stratified train-test splitting. <br />
-- ```features_to_drop```: List of features to drop after stratification (i.e., used for splitting but not for training). <br />
-- ```imputation_strategy```: String representing the imputation technique to apply, options: "iterative", "mean". <br />
-- ```models```: Dictionary containing the models to evaluate and their corresponding grid of hyperparameters. <br />
-- ```n_boot_iterations```: Integer number of bootstrap iterations performed during model evaluation. <br />
-- ```selection_metric```: String containing the metric used for model selection, options: "accuracy", "precision", "recall", "f1-score". <br />
-- ```selection_cutoff```: Float number representing the P-value threshold above which the best-ranked model is automatically selected. <br />
-- ```shap_output_prob```: Boolean indicating the output space of the SHAP values. If `true`, SHAP values are computed in probability space; if `false`, they are computed in log-odds space.
-- ```subset_percentage```: Float number representing the proportion of the dataset to use, (default: 1.0, i.e. the full dataset. <br />
 
 ### 4.3 Outputs <!-- generally speaking, I think it would be helpful to explain a bit more where to find each of the outputs. It doesn't have to have a lot of detail, but a bit more would be helpful -->
 The result of each run will be saved as HTML report within the reports folder. Each experiment is saved in a different folder, where the name contains the timestamp of the run and a unique identifier. Each report will  be also saved as an archived zip file for ease of transfer. Also, the outputs are saved in the output folder as well as the resources in the reports folders under the experiment's folder. 
