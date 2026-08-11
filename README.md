@@ -142,9 +142,9 @@ conda --version
 ```
 
 > **Troubleshooting:** If conda --version does not return a version number, open your Anaconda Prompt app and run:
-   ```bash
-conda init cmd.exe
-```
+>  	```bash
+>	conda init cmd.exe
+> 	```
 **** 
 
 Afterward, restart VS Code and open a new terminal session (Command Prompt (CMD) terminal recommended). 
