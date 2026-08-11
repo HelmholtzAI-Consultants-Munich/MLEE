@@ -141,10 +141,12 @@ Install the latest version of **Miniconda** (recommended) or **Anaconda** for yo
 conda --version
 ```
 
-   **Troubleshooting**: If conda --version does not return a version number, open your Anaconda Prompt app and run:
-```bash
+> **Troubleshooting:** If conda --version does not return a version number, open your Anaconda Prompt app and run:
+   ```bash
 conda init cmd.exe
 ```
+**** 
+
 Afterward, restart VS Code and open a new terminal session (Command Prompt (CMD) terminal recommended). 
 	
    Conda **23.10 or newer** is recommended. Older versions may use the slower `classic` dependency solver.
