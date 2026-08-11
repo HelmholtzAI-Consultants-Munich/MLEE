@@ -194,7 +194,10 @@ conda env create --file environment.yaml
 conda env create --file environment_cluster.yaml
 ```
 
-#### 3.3.3 Activate the environment
+## 4. Usage
+This section contains the instructions to run the framework.
+
+#### 4.1 Activate the environment
 
 ```bash
 conda activate MLEE
@@ -202,23 +205,23 @@ conda activate MLEE
 
 If you chose a different environment name, replace `MLEE` with the name you specified.
 
-#### 3.3.4 OPTIONAL: Update the environment
+#### 4.2 OPTIONAL: Update the environment
 
 If the environment definition has changed, update your existing environment.
 
-##### 3.3.4.1 Local machine <!-- is this equivalent to Mac and OS? -->
+##### 4.2.1 Local machine <!-- is this equivalent to Mac and OS? -->
 
 ```bash
 conda env update --file environment.yaml --prune
 ```
 
-##### 3.3.4.2 Cluster** <!-- is this equivalent to Linux and Cluster? -->
+##### 4.2.2 Cluster** <!-- is this equivalent to Linux and Cluster? -->
 
 ```bash
 conda env update --file environment_cluster.yaml --prune
 ```
 
-#### 3.3.5 OPTIONAL: Recreate the environment
+#### 4.3 OPTIONAL: Recreate the environment
 
 If updating does not resolve dependency conflicts, remove and recreate the environment.
 
@@ -232,12 +235,7 @@ Then recreate it by following the **Create the environment** section above **(3.
 
 > **Note:** Creating the environment may take several minutes because Conda must resolve and download package dependencies. If it remains on **"Solving environment"** for an unusually long time, verify that you are using Conda 23.10 or newer with the `libmamba` solver enabled.
 
-
-
-## 4. Usage
-This section contains the instructions to run the framework.
-
-#### 4.1 Preparing Input Parameters
+#### 4.4 Preparing Input Parameters
 Open the **input_parameters.json** file in your preferred code editor. Using the outline of inputs below as a guide, update the file to reflect your dataset and variables.
 
 - ```path_name```: Path to the directory containing the dataset, default: "./data/". <br />
@@ -262,14 +260,15 @@ Open the **input_parameters.json** file in your preferred code editor. Using the
 - ```shap_output_prob```: Boolean indicating the output space of the SHAP values. If `true`, SHAP values are computed in probability space; if `false`, they are computed in log-odds space.
 - ```subset_percentage```: Float number representing the proportion of the dataset to use, (default: 1.0, i.e. the full dataset. <br />
 
-#### 4.2.1 Local machine <!-- is this equivalent to Mac and OS? -->
-After the MLEE environment is activated and you have updated the input parameters, you can just type the following command to run the pipeline:
+#### 4.5 Run the framework
+#### 4.5.1 Local machine <!-- is this equivalent to Mac and OS? -->
+After the MLEE environment is activated and you have updated the input parameters, you can just type the following command to run the framework:
 ```
 python main.py
 ```
 This will execute the whole pipeline with the input parameters you can set in the input_parameters.json (see 4.1).
 
-#### 4.2.2 Cluster <!-- is this equivalent to Linux and Cluster? -->
+#### 4.5.2 Cluster <!-- is this equivalent to Linux and Cluster? -->
 1. First you have to log in to the cluster:
 	```
 	ssh username@hpc-build01
@@ -306,7 +305,7 @@ This will execute the whole pipeline with the input parameters you can set in th
 	python main.py
 	```
 
-### 4.3 Outputs <!-- generally speaking, I think it would be helpful to explain a bit more where to find each of the outputs. It doesn't have to have a lot of detail, but a bit more would be helpful -->
+### 4.6 Outputs <!-- generally speaking, I think it would be helpful to explain a bit more where to find each of the outputs. It doesn't have to have a lot of detail, but a bit more would be helpful -->
 The result of each run will be saved as HTML report within the reports folder. Each experiment is saved in a different folder, where the name contains the timestamp of the run and a unique identifier. Each report will  be also saved as an archived zip file for ease of transfer. Also, the outputs are saved in the output folder as well as the resources in the reports folders under the experiment's folder. 
 
 ## 5. Contributing
