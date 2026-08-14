@@ -223,7 +223,7 @@ If you chose a different environment name, replace `MLEE` with the name you spec
 
 
 <details>
-	<summary><em>4.2 OPTIONAL: Update the environment</em> </summary>
+	<summary><em>OPTIONAL: Update the environment</em> </summary>
 
 If the environment definition has changed, update your existing environment.
 
@@ -232,10 +232,6 @@ _Windows and macOS_
 ```bash
 conda env update --file environment.yaml --prune
 ```
-</details>
-
-<details>
-	<summary><em>Linux and cluster</em> </summary>
 
 ```bash
 conda env update --file environment_cluster.yaml --prune
@@ -243,7 +239,7 @@ conda env update --file environment_cluster.yaml --prune
 </details>
 
 <details>
-	<summary><em>4.3 OPTIONAL: Recreate the environment</em> </summary>
+	<summary><em>OPTIONAL: Recreate the environment</em> </summary>
 
 If updating does not resolve dependency conflicts, remove and recreate the environment.
 
@@ -259,7 +255,7 @@ Then recreate it by following [3.3.2 Create the environment](#332-create-the-env
 </details>
 
 
-#### 4.4 Preparing Input Parameters
+#### 4.2 Define the input parameters
 Open the **input_parameters.json** file in your preferred code editor. Using the outline of inputs below as a guide and update the file to reflect your dataset and variables.
 
 - ```path_name```: Path to the directory containing the dataset, default: "./data/". <br />
@@ -284,24 +280,28 @@ Open the **input_parameters.json** file in your preferred code editor. Using the
 - ```shap_output_prob```: Boolean indicating the output space of the SHAP values. If `true`, SHAP values are computed in probability space; if `false`, they are computed in log-odds space.
 - ```subset_percentage```: Float number representing the proportion of the dataset to use, (default: 1.0, i.e. the full dataset. <br />
 
-#### 4.5 Run the framework
+#### 4.3 Run the framework
 _Windows and macOS_
 After the MLEE environment is activated and you have updated the input parameters, you can just type the following command to run the framework:
 ```
 python main.py
 ```
-This will execute the whole pipeline with the input parameters you can set in the input_parameters.json (see 4.1).
+This will execute the whole pipeline with the input parameters you can define in the input_parameters.json - see [4.2 Define the input parameters](#42-preparing-input-parameters)
 
 <details>
 	<summary><em>Linux and cluster</em> </summary>
 1. First you have to log in to the cluster:
+	
 	```
 	ssh username@hpc-build01
 	```
+	
 	or 
+	
 	```
 	ssh user.name@@hpc-submit03gui
 	```
+	
 2. The cloning procedure on the cluster is the same as on any device and it is done once - see [3.2.2 Clone the MLEE repository](#322-clone-the-mlee-repository)
 3. Transfer your data csv file to the folder named "data". In case of confidential data, you should encrypt it e.g. via **7zip**. Each time you log in, you need to extract the data.7z and  delete the input of the `data` folder once you are done to keep it secure.
 4. There are two ways to run the code on the cluster. Either submit a job via a slurm script or request an interactive session/job and run it on the assigned compute node.\
@@ -333,8 +333,8 @@ This will execute the whole pipeline with the input parameters you can set in th
 	```
 </details>
 
-### 4.6 Outputs <!-- generally speaking, I think it would be helpful to explain a bit more where to find each of the outputs. It doesn't have to have a lot of detail, but a bit more would be helpful -->
-The result of each run will be saved as HTML report within the `reports` folder. Each run is saved in a different folder, where the name contains the timestamp of the run and a unique identifier. Each report will  be also saved as an archived zip file for ease of transfer. Also, the outputs are saved in the output folder as well as the resources in the `reports` folders under the experiment's folder. 
+### 4.6 Outputs <!-- generally speaking, I think it would be helpful to explain a bit more where to find each of the outputs. It doesn't have to have a lot of detail, but a bit more would be helpful --> <!-- KW: I agree -->
+The result of each run will be saved as **HTML** report within the `reports` folder. Each run is saved in a different folder, where the name contains the timestamp of the run and a unique identifier. Each report will  be also saved as an archived **zip file** for ease of transfer. Also, the outputs are saved in the `output` folder as well as the resources in the `reports` folders under your specific **MLEE** folder. 
 
 ## 5. Contributing
 
