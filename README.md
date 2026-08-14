@@ -13,27 +13,27 @@ If you already have **Git** and **Conda** installed, within your terminal, navig
 
 ##### 2.1 Windows and macOS
 <!-- I think we should remove the step python.main.py--we don't need them to run the code yet. I would reccomend directing them to step 4. i.e., "Once this step is complete, you can proceed to **step 4**. -->
-	```bash
-	git clone https://github.com/HelmholtzAI-Consultants-Munich/MLEE.git
-	cd MLEE
+```bash
+git clone https://github.com/HelmholtzAI-Consultants-Munich/MLEE.git
+cd MLEE
+
+conda env create --file environment.yaml
+conda activate MLEE
+```
 	
-	conda env create --file environment.yaml
-	conda activate MLEE
-	```
-	
-	Once this step is complete, you can proceed to **section 4**.
+Once this step is complete, you can proceed to [4. Usage](#4-usage)
 
 <details>
 	<summary>2.2 Linux and cluster <!-- to my knowledge, this may be the quick start for cluster --></summary>
 
-	```bash
-	git clone https://github.com/HelmholtzAI-Consultants-Munich/MLEE.git
-	cd MLEE
-	
-	conda env create --file environment_cluster.yaml
-	conda activate MLEE
-	```
-   Once this step is complete, you can proceed to **section 4**.
+```bash
+git clone https://github.com/HelmholtzAI-Consultants-Munich/MLEE.git
+cd MLEE
+
+conda env create --file environment_cluster.yaml
+conda activate MLEE
+```
+Once this step is complete, you can proceed to **section 4**.
 </details>
 
 ## 3. Detailed installation instruction
