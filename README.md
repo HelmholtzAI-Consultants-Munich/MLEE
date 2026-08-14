@@ -37,7 +37,7 @@ Once this step is complete, you can proceed to [4. Usage](#4-usage)
 
 ## 3. Detailed installation instruction
 
-If this is your first time setting up the project or you need to configure SSH, Conda, or the data archive, continue with the detailed installation instructions below.
+If this is your first time setting up the project or you need to configure SSH or Conda continue with the detailed installation instructions below.
 
 
 ### 3.1 Prerequisites
@@ -105,12 +105,23 @@ You only need to clone the repository once. If you intend to run MLEE on the clu
 
 **Recommended: clone using HTTPS**
 
-Navigate to the directory where you want to store the project and run:
+Navigate to the local directory where you want to store the project (helpful that have created a folder there first and open it via VS code).
+Then, open a terminal in VS code via the **Toggle Panel** and open a **Command Prompt** (CMD).
+Then, you can run the following commands:
 
 ```bash 
 git clone https://github.com/HelmholtzAI-Consultants-Munich/MLEE.git
 cd MLEE
 ```
+
+Now, you should be able to see the cloned 'MLEE' repository included in the folder you had created and opened in the upper left corner of your VS code interface under explorer.
+
+> **Troubleshooting:** If git is not recognized, open your Anaconda Prompt app and run:
+>  	```bash
+>	conda init cmd.exe
+> 	```
+> Afterward, restart VS Code and open a new terminal session (Command Prompt (CMD) terminal recommended). 
+**** 
 
 <details>
 	<summary><em>Optional: clone using SSH</em> </summary>
@@ -149,15 +160,7 @@ conda --version
 ```
 
 <details>
-	<summary><em>Linux and cluster</em> </summary>
-
-**Troubleshooting:** If conda --version does not return a version number, open your Anaconda Prompt app and run:
-
-```bash
-conda init cmd.exe
-```
-
-Afterward, restart VS Code and open a new terminal session (Command Prompt (CMD) terminal recommended). 
+	<summary><em>Linux and cluster</em> </summary> 
 </details>
 	
    Conda **23.10 or newer** is recommended. Older versions may use the slower `classic` dependency solver.
@@ -287,7 +290,7 @@ Open the **input_parameters.json** file in your preferred code editor. Using the
 ### 4.3 Run the framework
 _Windows and macOS_
 
-After the MLEE environment is activated and you have updated the input parameters, you can just type the following command to run the framework:
+After the MLEE environment is activated and you have updated the input parameters file, you can just type the following command to the Command Prompt and run the framework:
 
 ```
 python main.py
