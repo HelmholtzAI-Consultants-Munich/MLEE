@@ -9,9 +9,9 @@ By combining predictive modeling with interpretable ML approaches, MLEE helps re
 
 ## 2. Quick start 
 
-If you already have **Git** and **Conda** installed, go to your terminal, navigate to the directory where you want to clone the MLEE repository to and run:
+If **Git** and **Conda** is already installed, go to your terminal, navigate to the directory where you want to clone the MLEE repository to and run:
 
-##### Windows and macOS
+_Windows and macOS_
 ```bash
 git clone https://github.com/HelmholtzAI-Consultants-Munich/MLEE.git
 cd MLEE
@@ -21,7 +21,7 @@ conda activate MLEE
 ```
 	
 <details>
-	<summary>Linux and cluster <!-- to my knowledge (KW: Nikos or Brooke?? - I guess we should our initials when commenting :-)), this may be the quick start for cluster --></summary>
+	<summary><em>Linux and cluster</em> <!-- to my knowledge (KW: Nikos or Brooke?? - I guess we should our initials when commenting :-)), this may be the quick start for cluster --></summary>
 
 ```bash
 git clone https://github.com/HelmholtzAI-Consultants-Munich/MLEE.git
