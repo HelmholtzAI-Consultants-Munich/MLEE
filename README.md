@@ -149,11 +149,12 @@ conda --version
 
 <details>
 	<summary><em>Linux and cluster</em> </summary>
+
 **Troubleshooting:** If conda --version does not return a version number, open your Anaconda Prompt app and run:
+
 ```bash
 conda init cmd.exe
 ```
-**** 
 
 Afterward, restart VS Code and open a new terminal session (Command Prompt (CMD) terminal recommended). 
 </details>
@@ -213,7 +214,7 @@ conda env create --file environment_cluster.yaml
 ## 4. Usage
 This section contains the instructions to run the framework.
 
-#### 4.1 Activate the environment
+### 4.1 Activate the environment
 
 ```bash
 conda activate MLEE
@@ -232,6 +233,8 @@ _Windows and macOS_
 ```bash
 conda env update --file environment.yaml --prune
 ```
+
+_Linux and cluster_
 
 ```bash
 conda env update --file environment_cluster.yaml --prune
@@ -255,7 +258,7 @@ Then recreate it by following [3.3.2 Create the environment](#332-create-the-env
 </details>
 
 
-#### 4.2 Define the input parameters
+### 4.2 Define the input parameters
 Open the **input_parameters.json** file in your preferred code editor. Using the outline of inputs below as a guide and update the file to reflect your dataset and variables.
 
 - ```path_name```: Path to the directory containing the dataset, default: "./data/". <br />
@@ -280,7 +283,7 @@ Open the **input_parameters.json** file in your preferred code editor. Using the
 - ```shap_output_prob```: Boolean indicating the output space of the SHAP values. If `true`, SHAP values are computed in probability space; if `false`, they are computed in log-odds space.
 - ```subset_percentage```: Float number representing the proportion of the dataset to use, (default: 1.0, i.e. the full dataset. <br />
 
-#### 4.3 Run the framework
+### 4.3 Run the framework
 _Windows and macOS_
 After the MLEE environment is activated and you have updated the input parameters, you can just type the following command to run the framework:
 ```
@@ -333,7 +336,7 @@ This will execute the whole pipeline with the input parameters you can define in
 	```
 </details>
 
-### 4.6 Outputs <!-- generally speaking, I think it would be helpful to explain a bit more where to find each of the outputs. It doesn't have to have a lot of detail, but a bit more would be helpful --> <!-- KW: I agree -->
+### 4.4. Outputs <!-- generally speaking, I think it would be helpful to explain a bit more where to find each of the outputs. It doesn't have to have a lot of detail, but a bit more would be helpful --> <!-- KW: I agree -->
 The result of each run will be saved as **HTML** report within the `reports` folder. Each run is saved in a different folder, where the name contains the timestamp of the run and a unique identifier. Each report will  be also saved as an archived **zip file** for ease of transfer. Also, the outputs are saved in the `output` folder as well as the resources in the `reports` folders under your specific **MLEE** folder. 
 
 ## 5. Contributing
