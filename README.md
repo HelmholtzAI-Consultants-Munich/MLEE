@@ -53,16 +53,18 @@ Before setting up the project, ensure you have the following installed:
 
 #### 3.2.1 Install Conda
 
-If you already have **Conda** installed (Miniconda or Anaconda, version 23.10 or newer is recommended), you can proceed directly to **step 3.3**. Otherwise, follow **step 3.2.2.1** for Windows and macOS installation or **3.2.2.2** for Linux and cluster installation.
+If you already have **Conda** installed (Miniconda or Anaconda, version 23.10 or newer), you can proceed directly to [3.2.2 Clone the MLEE repository](#322-clone-the-mlee-repository)
 
 _Windows and macOS_
 
-Install the latest version of **Miniconda** (recommended) or **Anaconda** for your operating system and processor architecture: https://www.anaconda.com/download/success
+Install the latest version of **Miniconda** (recommended) or **Anaconda** for your operating system and processor architecture: 
+
+https://www.anaconda.com/download/success
 
 <details>
 	<summary><em>Linux and cluster</em> </summary>
 
-1. Create a `tools` directory in your home folder (if it does not already exist):
+1. Create a `tools` directory in your home folder (if it does not already exist):  <!-- KW: Is this done in VS terminal or similar? -->
 	```bash
 	mkdir ~/tools
 	cd ~/tools
@@ -94,22 +96,23 @@ Install the latest version of **Miniconda** (recommended) or **Anaconda** for yo
 	source ~/miniconda3/etc/profile.d/conda.sh
 	~/miniconda3/bin/conda init bash
 	```
-	Log out and log in again after the installation.
+	Log out and log in again after the installation. <!-- KW: Login/out of the cluter? -->
 </details>
 
 #### 3.2.2 Clone the MLEE repository
 
-You only need to clone the repository once per local device. If you intend to run MLEE on the cluster, the file system is shared across login and compute nodes, so the repository also only needs to be cloned once.
+You only need to clone the repository once. If you intend to run MLEE on the cluster, the file system is shared across login and compute nodes, so the repository also only needs to be cloned once.
 
-##### Recommended: clone using HTTPS
-Navigate to the local directory where you want to store the project and run:
+**Recommended: clone using HTTPS**
+Navigate to the directory where you want to store the project and run:
 
 ```bash 
 git clone https://github.com/HelmholtzAI-Consultants-Munich/MLEE.git
 cd MLEE
 ```
 
-##### Optional: clone using SSH
+<details>
+	<summary><em>Optional: clone using SSH</em> </summary>
 
 If you prefer to use SSH, first configure an SSH key for GitHub by following the official GitHub instructions:
 
@@ -131,6 +134,7 @@ Host github.com
     IdentitiesOnly yes
     Port 443
 ```
+</details>
 
 
 
@@ -143,13 +147,16 @@ Host github.com
 conda --version
 ```
 
-> **Troubleshooting:** If conda --version does not return a version number, open your Anaconda Prompt app and run:
->  	```bash
->	conda init cmd.exe
-> 	```
+<details>
+	<summary><em>Linux and cluster</em> </summary>
+**Troubleshooting:** If conda --version does not return a version number, open your Anaconda Prompt app and run:
+```bash
+conda init cmd.exe
+```
 **** 
 
 Afterward, restart VS Code and open a new terminal session (Command Prompt (CMD) terminal recommended). 
+</details>
 	
    Conda **23.10 or newer** is recommended. Older versions may use the slower `classic` dependency solver.
 	
@@ -165,7 +172,8 @@ The recommended output is:
 solver: libmamba
 ```
 	
-OPTIONAL: If the solver is `classic`, switch to `libmamba`:
+<details>
+	<summary><em>OPTIONAL: If the solver is `classic`, switch to `libmamba`:</em> </summary>
 
 ```bash
 conda config --set solver libmamba
@@ -177,26 +185,30 @@ Verify the change:
 conda config --show solver
 ```
 	
-OPTIONAL: If `libmamba` is unavailable, update Conda before continuing:
+If `libmamba` is unavailable, update Conda before continuing:
 
 ```bash
 conda update -n base conda
 ```
+</details>
 
 #### 3.3.2 Create the environment
-Remain in the terminal of your code editor. Make sure you are in the root directory of the cloned `MLEE` repository. Follow instructions for either the local machine **3.3.2.1** or cluster **3.3.2.2**.
+Remain in the terminal of your code editor. Make sure you are in the root directory of the cloned `MLEE` repository. 
 
-##### 3.3.2.1 Local machine
+_Windows and macOS_
 
 ```bash
 conda env create --file environment.yaml
 ```
 
-##### 3.3.2.2 Cluster
+<details>
+	<summary><em>Linux and cluster</em> </summary>
 
 ```bash
 conda env create --file environment_cluster.yaml
 ```
+</details>
+
 
 ## 4. Usage
 This section contains the instructions to run the framework.
@@ -209,23 +221,29 @@ conda activate MLEE
 
 If you chose a different environment name, replace `MLEE` with the name you specified.
 
-#### 4.2 OPTIONAL: Update the environment
+
+<details>
+	<summary><em>4.2 OPTIONAL: Update the environment</em> </summary>
 
 If the environment definition has changed, update your existing environment.
 
-##### 4.2.1 Local machine <!-- is this equivalent to Mac and OS? -->
+_Windows and macOS_
 
 ```bash
 conda env update --file environment.yaml --prune
 ```
+</details>
 
-##### 4.2.2 Cluster** <!-- is this equivalent to Linux and Cluster? -->
+<details>
+	<summary><em>Linux and cluster</em> </summary>
 
 ```bash
 conda env update --file environment_cluster.yaml --prune
 ```
+</details>
 
-#### 4.3 OPTIONAL: Recreate the environment
+<details>
+	<summary><em>4.3 OPTIONAL: Recreate the environment</em> </summary>
 
 If updating does not resolve dependency conflicts, remove and recreate the environment.
 
@@ -235,12 +253,14 @@ Delete the environment:
 conda remove --name MLEE --all
 ```
 
-Then recreate it by following the **Create the environment** section above **(3.2.2)**).
+Then recreate it by following [3.3.2 Create the environment](#332-create-the-environment)
 
 > **Note:** Creating the environment may take several minutes because Conda must resolve and download package dependencies. If it remains on **"Solving environment"** for an unusually long time, verify that you are using Conda 23.10 or newer with the `libmamba` solver enabled.
+</details>
+
 
 #### 4.4 Preparing Input Parameters
-Open the **input_parameters.json** file in your preferred code editor. Using the outline of inputs below as a guide, update the file to reflect your dataset and variables.
+Open the **input_parameters.json** file in your preferred code editor. Using the outline of inputs below as a guide and update the file to reflect your dataset and variables.
 
 - ```path_name```: Path to the directory containing the dataset, default: "./data/". <br />
 - ```file_name```: Name of the dataset file <br />
@@ -265,14 +285,15 @@ Open the **input_parameters.json** file in your preferred code editor. Using the
 - ```subset_percentage```: Float number representing the proportion of the dataset to use, (default: 1.0, i.e. the full dataset. <br />
 
 #### 4.5 Run the framework
-#### 4.5.1 Local machine <!-- is this equivalent to Mac and OS? -->
+_Windows and macOS_
 After the MLEE environment is activated and you have updated the input parameters, you can just type the following command to run the framework:
 ```
 python main.py
 ```
 This will execute the whole pipeline with the input parameters you can set in the input_parameters.json (see 4.1).
 
-#### 4.5.2 Cluster <!-- is this equivalent to Linux and Cluster? -->
+<details>
+	<summary><em>Linux and cluster</em> </summary>
 1. First you have to log in to the cluster:
 	```
 	ssh username@hpc-build01
@@ -281,36 +302,39 @@ This will execute the whole pipeline with the input parameters you can set in th
 	```
 	ssh user.name@@hpc-submit03gui
 	```
-2. The cloning procedure on the cluster is the same as on any device and it is done once.
-3. For the first time you need to transfer csv file to the folder named "data" and also encrypt it as mentioned above. Afterwards, each time you log in you just need to extract the data.7z and you delete the "data" folder once you don't need it to keep it secure, as mentioned in the previous sections.
-4. There are two ways to run the code on the cluster, one is to submit a job via a slurm script and the second is to request an interactive session/job and run it on the assigned compute node.\
-	a. submit a slurm script:
-	you can run the script called run_pipeline.sbatch after navigating to MLEE folder by entering:
+2. The cloning procedure on the cluster is the same as on any device and it is done once - see [3.2.2 Clone the MLEE repository](#322-clone-the-mlee-repository)
+3. Transfer your data csv file to the folder named "data". In case of confidential data, you should encrypt it e.g. via **7zip**. Each time you log in, you need to extract the data.7z and  delete the input of the `data` folder once you are done to keep it secure.
+4. There are two ways to run the code on the cluster. Either submit a job via a slurm script or request an interactive session/job and run it on the assigned compute node.\
+	a) Submit a slurm script:
+	
+	You can run the script called run_pipeline.sbatch after navigating to MLEE folder by entering:
 	```
  	sbatch run_pipeline.sbatch
  	```
- 	this will request resources from slurm job scheduler and you will see the job allocation number. You can always check the running jobs by
+ 	This will request resources from slurm job scheduler and you will see the job allocation number. You can always check the running jobs by
 	```
  	squeue -u user.name
  	```
  	replacing user.name with your username. Standard output and error logs are stored in the slurm_log directory.
 
-	b. request a compute resource on some compute node:
+	b) Request a compute resource on some compute node:
+	
 	by entering this command in the cluster terminal you will get same amount of resource as the sbatch script but also you get an interactive session that helps with 	editing and running the code:
 	```
 	salloc -J N2N_pipeline -c 16 -p cpu_p --qos=cpu_normal --mem=128G -t 1-00:00:00
 	```
-	once you got to the compute node you then then activate the conda environment
+	Once you got to the compute node, you can activate the conda environment via
 	```
 	conda activate MLEE
 	```
-	then run the code the same as local computers with:
+	and run the code via
 	```
 	python main.py
 	```
+</details>
 
 ### 4.6 Outputs <!-- generally speaking, I think it would be helpful to explain a bit more where to find each of the outputs. It doesn't have to have a lot of detail, but a bit more would be helpful -->
-The result of each run will be saved as HTML report within the reports folder. Each experiment is saved in a different folder, where the name contains the timestamp of the run and a unique identifier. Each report will  be also saved as an archived zip file for ease of transfer. Also, the outputs are saved in the output folder as well as the resources in the reports folders under the experiment's folder. 
+The result of each run will be saved as HTML report within the `reports` folder. Each run is saved in a different folder, where the name contains the timestamp of the run and a unique identifier. Each report will  be also saved as an archived zip file for ease of transfer. Also, the outputs are saved in the output folder as well as the resources in the `reports` folders under the experiment's folder. 
 
 ## 5. Contributing
 
