@@ -7,12 +7,11 @@ The MLEE framework integrates data preprocessing, multiple machine learning clas
 By combining predictive modeling with interpretable ML approaches, MLEE helps researchers explore complex, high-dimensional datasets and uncover important drivers of health outcomes. The framework is designed to complement traditional epidemiological methods and facilitate the use of ML in environmental epidemiology.
 
 
-## 2. Quick start <!-- to my knowledge, this quick start is only for local machine set up. perhaps we should also create a quick start for cluster -->
+## 2. Quick start 
 
-If you already have **Git** and **Conda** installed, within your terminal, navigate to your local directory where you want to clone the MLEE repository and run:
+If you already have **Git** and **Conda** installed, go to your terminal, navigate to the directory where you want to clone the MLEE repository to and run:
 
-##### 2.1 Windows and macOS
-<!-- I think we should remove the step python.main.py--we don't need them to run the code yet. I would reccomend directing them to step 4. i.e., "Once this step is complete, you can proceed to **step 4**. -->
+##### Windows and macOS
 ```bash
 git clone https://github.com/HelmholtzAI-Consultants-Munich/MLEE.git
 cd MLEE
@@ -21,10 +20,8 @@ conda env create --file environment.yaml
 conda activate MLEE
 ```
 	
-Once this step is complete, you can proceed to [4. Usage](#4-usage)
-
 <details>
-	<summary>2.2 Linux and cluster <!-- to my knowledge, this may be the quick start for cluster --></summary>
+	<summary>Linux and cluster <!-- to my knowledge (KW: Nikos or Brooke?? - I guess we should our initials when commenting :-)), this may be the quick start for cluster --></summary>
 
 ```bash
 git clone https://github.com/HelmholtzAI-Consultants-Munich/MLEE.git
@@ -33,8 +30,10 @@ cd MLEE
 conda env create --file environment_cluster.yaml
 conda activate MLEE
 ```
-Once this step is complete, you can proceed to **section 4**.
 </details>
+
+Once this step is complete, you can proceed to [4. Usage](#4-usage)
+
 
 ## 3. Detailed installation instruction
 
