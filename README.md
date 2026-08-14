@@ -105,7 +105,7 @@ You only need to clone the repository once. If you intend to run MLEE on the clu
 
 **Recommended: clone using HTTPS**
 
-Navigate to the local directory where you want to store the project (helpful that have created a folder there first and open it via VS code).
+Navigate to the local directory where you want to store the project (helpful if you have already created a folder there and open it via VS code).
 Then, open a terminal in VS code via the **Toggle Panel** and open a **Command Prompt** (CMD).
 Then, you can run the following commands:
 
@@ -114,7 +114,7 @@ git clone https://github.com/HelmholtzAI-Consultants-Munich/MLEE.git
 cd MLEE
 ```
 
-Now, you should be able to see the cloned 'MLEE' repository included in the folder you had created and opened in the upper left corner of your VS code interface under explorer.
+Now, you should be able to see the cloned 'MLEE' repository copied to your specified folder and opened in the upper left corner of your VS code interface under explorer.
 
 > **Troubleshooting:** If git is not recognized, open your Anaconda Prompt app and run:
 >  	```bash
