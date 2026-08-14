@@ -21,9 +21,8 @@ conda env create --file environment.yaml
 conda activate MLEE
 ```
 
-##### 2.2 Linux and cluster <!-- to my knowledge, this may be the quick start for cluster -->
 <details>
-	<summary>Click to expand</summary>
+	<summary>##### 2.2 Linux and cluster <!-- to my knowledge, this may be the quick start for cluster --></summary>
 
 	```bash
 	git clone https://github.com/HelmholtzAI-Consultants-Munich/MLEE.git
@@ -32,7 +31,7 @@ conda activate MLEE
 	conda env create --file environment_cluster.yaml
 	conda activate MLEE
 	```
-	Once this step is complete, you can proceed to **section 4**.
+   Once this step is complete, you can proceed to **section 4**.
 
 ## 3. Detailed installation instruction
 
