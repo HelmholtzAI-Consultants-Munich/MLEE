@@ -44,61 +44,23 @@ If this is your first time setting up the project or you need to configure SSH, 
 
 Before setting up the project, ensure you have the following installed:
 
-- Code editor. If you do not already have a preferred code editor or IDE, we recommend using **Visual Studio Code (VS Code)** which can be downloaded here: https://code.visualstudio.com/
-- **Git** for cloning the repository, which can be downloaded here: https://git-scm.com/install/
-  
-**Conda** (Miniconda recommended, Anaconda also supported) is also required. We recommend using **Conda 23.10 or newer**, as newer versions include the `libmamba` dependency solver, which can significantly reduce environment creation time. If you do not have Conda installed, follow the installation instructions in the next section **(step 3.2.2)**.
+- **Code editor**: If you do not already have a preferred code editor or IDE, we recommend using **Visual Studio Code (VS Code)** which can be downloaded here: https://code.visualstudio.com/
+- **Git**: For cloning the repository which can be downloaded here: https://git-scm.com/install/
+- **Conda** (Miniconda recommended, Anaconda also supported): We recommend using **Conda 23.10 or newer**, as newer versions include the `libmamba` dependency solver, which can significantly reduce environment creation time. If you do not have Conda installed, follow the installation instructions below [3.2.1 Install Conda](#321-install-conda)
 
 
-### 3.2 Installation  <!-- I think it is slightly confusing to talk about Conda installation, clone the MLEE repository, and then provide instructions to clone Conda after. can we move this Installation step after Conda installation? -->
+### 3.2 Installation  
 
-#### 3.2.1 Clone the MLEE repository
-
-You only need to clone the repository once per local device. If you intend to run MLEE on the cluster, the file system is shared across login and compute nodes, so the repository also only needs to be cloned once.
-
-##### Recommended: clone using HTTPS
-Navigate to the local directory where you want to store the project and run:
-
-```bash 
-git clone https://github.com/HelmholtzAI-Consultants-Munich/MLEE.git
-cd MLEE
-```
-
-##### Optional: clone using SSH
-
-If you prefer to use SSH, first configure an SSH key for GitHub by following the official GitHub instructions:
-
-https://docs.github.com/en/authentication/connecting-to-github-with-ssh
-
-After adding your SSH key to your GitHub account, clone the repository with:
-
-```bash
-git clone git@github.com:HelmholtzAI-Consultants-Munich/MLEE.git
-cd MLEE
-```
-
-On the cluster, if direct SSH access to GitHub is restricted, you can configure GitHub SSH to use port 443:
-
-```text
-Host github.com
-    HostName ssh.github.com
-    IdentityFile ~/.ssh/id_ed25519_github
-    IdentitiesOnly yes
-    Port 443
-```
-
-#### 3.2.2 Install Conda
+#### 3.2.1 Install Conda
 
 If you already have **Conda** installed (Miniconda or Anaconda, version 23.10 or newer is recommended), you can proceed directly to **step 3.3**. Otherwise, follow **step 3.2.2.1** for Windows and macOS installation or **3.2.2.2** for Linux and cluster installation.
 
-##### 3.2.2.1 Windows and macOS
+_Windows and macOS_
 
-Install the latest version of **Miniconda** (recommended) or **Anaconda** for your operating system and processor architecture.
+Install the latest version of **Miniconda** (recommended) or **Anaconda** for your operating system and processor architecture: https://www.anaconda.com/download/success
 
-- Miniconda: https://www.anaconda.com/download/success
-- Anaconda: https://www.anaconda.com/download
-
-##### 3.2.2.2 Linux and cluster
+<details>
+	<summary><em>Linux and cluster</em> </summary>
 
 1. Create a `tools` directory in your home folder (if it does not already exist):
 	```bash
@@ -133,6 +95,43 @@ Install the latest version of **Miniconda** (recommended) or **Anaconda** for yo
 	~/miniconda3/bin/conda init bash
 	```
 	Log out and log in again after the installation.
+</details>
+
+#### 3.2.2 Clone the MLEE repository
+
+You only need to clone the repository once per local device. If you intend to run MLEE on the cluster, the file system is shared across login and compute nodes, so the repository also only needs to be cloned once.
+
+##### Recommended: clone using HTTPS
+Navigate to the local directory where you want to store the project and run:
+
+```bash 
+git clone https://github.com/HelmholtzAI-Consultants-Munich/MLEE.git
+cd MLEE
+```
+
+##### Optional: clone using SSH
+
+If you prefer to use SSH, first configure an SSH key for GitHub by following the official GitHub instructions:
+
+https://docs.github.com/en/authentication/connecting-to-github-with-ssh
+
+After adding your SSH key to your GitHub account, clone the repository with:
+
+```bash
+git clone git@github.com:HelmholtzAI-Consultants-Munich/MLEE.git
+cd MLEE
+```
+
+On the cluster, if direct SSH access to GitHub is restricted, you can configure GitHub SSH to use port 443:
+
+```text
+Host github.com
+    HostName ssh.github.com
+    IdentityFile ~/.ssh/id_ed25519_github
+    IdentitiesOnly yes
+    Port 443
+```
+
 
 
 ### 3.3 Environment setup
