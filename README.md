@@ -104,6 +104,7 @@ https://www.anaconda.com/download/success
 You only need to clone the repository once. If you intend to run MLEE on the cluster, the file system is shared across login and compute nodes, so the repository also only needs to be cloned once.
 
 **Recommended: clone using HTTPS**
+
 Navigate to the directory where you want to store the project and run:
 
 ```bash 
@@ -285,29 +286,33 @@ Open the **input_parameters.json** file in your preferred code editor. Using the
 
 ### 4.3 Run the framework
 _Windows and macOS_
+
 After the MLEE environment is activated and you have updated the input parameters, you can just type the following command to run the framework:
+
 ```
 python main.py
 ```
+
 This will execute the whole pipeline with the input parameters you can define in the input_parameters.json - see [4.2 Define the input parameters](#42-preparing-input-parameters)
 
 <details>
 	<summary><em>Linux and cluster</em> </summary>
 1. First you have to log in to the cluster:
 	
-	```
-	ssh username@hpc-build01
-	```
+```
+ssh username@hpc-build01
+```
 	
-	or 
+or 
 	
-	```
-	ssh user.name@@hpc-submit03gui
-	```
+```
+ssh user.name@@hpc-submit03gui
+```
 	
 2. The cloning procedure on the cluster is the same as on any device and it is done once - see [3.2.2 Clone the MLEE repository](#322-clone-the-mlee-repository)
-3. Transfer your data csv file to the folder named "data". In case of confidential data, you should encrypt it e.g. via **7zip**. Each time you log in, you need to extract the data.7z and  delete the input of the `data` folder once you are done to keep it secure.
+3. Transfer your data csv file to the folder named `data`. In case of confidential data, you should encrypt it e.g. via **7zip**. Each time you log in, you need to extract the data.7z and  delete the input of the `data` folder once you are done to keep it secure.
 4. There are two ways to run the code on the cluster. Either submit a job via a slurm script or request an interactive session/job and run it on the assigned compute node.\
+	
 	a) Submit a slurm script:
 	
 	You can run the script called run_pipeline.sbatch after navigating to MLEE folder by entering:
