@@ -299,7 +299,7 @@ After the MLEE environment is activated and you have updated the input parameter
 python main.py
 ```
 
-This will execute the whole pipeline with the input parameters you defined in the input_parameters.json - see [4.2 Define the input parameters](#42-preparing-input-parameters)
+This will execute the whole pipeline with the input parameters you defined in input_parameters.json - see [4.2 Define the input parameters](#42-preparing-input-parameters)
 
 <details>
 	<summary><em>Linux and cluster</em> </summary>
