@@ -7,6 +7,8 @@ The MLEE framework integrates data preprocessing, multiple machine learning clas
 By combining predictive modeling with interpretable ML approaches, MLEE helps researchers explore complex, high-dimensional datasets and uncover important drivers of health outcomes. The framework is designed to complement traditional epidemiological methods and facilitate the use of ML in environmental epidemiology.
 
 
+If **Git** and **Conda** are already installed, you can start with [2. Quick start](#2-Quick-start). If this is your first time setting up the project or you need to configure Git or Conda, continue with the detailed installation instructions found in [3. Detailed installation instruction](#3-Detailed-installation-instruction)
+
 ## 2. Quick start 
 
 If **Git** and **Conda** is already installed, go to your terminal, navigate to the directory where you want to clone the MLEE repository to and run:
@@ -21,7 +23,7 @@ conda activate MLEE
 ```
 	
 <details>
-	<summary><em>Linux and cluster</em> <!-- to my knowledge (KW: Nikos or Brooke?? - I guess we should our initials when commenting :-)), this may be the quick start for cluster --></summary>
+	<summary><em>Linux and cluster</em> <!-- to my knowledge (KW: Nikos or Brooke?? - I guess we should our initials when commenting :-)), this may be the quick start for cluster BU: yes, I believe this is consistent with what was in the readme previously --></summary>
 
 ```bash
 git clone https://github.com/HelmholtzAI-Consultants-Munich/MLEE.git
@@ -37,16 +39,16 @@ Once this step is complete, you can proceed to [4. Usage](#4-usage)
 
 ## 3. Detailed installation instruction
 
-If this is your first time setting up the project or you need to configure SSH or Conda continue with the detailed installation instructions below.
+If this is your first time setting up the project or you need to configure Git or Conda, continue with the detailed installation instructions below.
 
 
 ### 3.1 Prerequisites
 
 Before setting up the project, ensure you have the following installed:
 
-- **Code editor**: If you do not already have a preferred code editor or IDE, we recommend using **Visual Studio Code (VS Code)** which can be downloaded here: https://code.visualstudio.com/
-- **Git**: For cloning the repository which can be downloaded here: https://git-scm.com/install/
-- **Conda** (Miniconda recommended, Anaconda also supported): We recommend using **Conda 23.10 or newer**, as newer versions include the `libmamba` dependency solver, which can significantly reduce environment creation time. If you do not have Conda installed, follow the installation instructions below [3.2.1 Install Conda](#321-install-conda)
+- **Code editor**: If you do not already have a preferred code editor or IDE, we recommend using **Visual Studio Code (VS Code)**, which can be downloaded here: https://code.visualstudio.com/
+- **Git**: Necessary for cloning the repository. Git be downloaded here: https://git-scm.com/install/
+- **Conda**: We recommend Miniconda, but Anaconda is also supported). We also recommend using **Conda 23.10 or newer**, as newer versions include the `libmamba` dependency solver, which can significantly reduce environment creation time. If you do not have Conda installed, follow the installation instructions below [3.2.1 Install Conda](#321-install-conda). If you already have Conda installed, proceed to [3.2.2 Clone the MLEE repository](#322-Clone-the-MLEE-repository).
 
 
 ### 3.2 Installation  
@@ -64,7 +66,7 @@ https://www.anaconda.com/download/success
 <details>
 	<summary><em>Linux and cluster</em> </summary>
 
-1. Create a `tools` directory in your home folder (if it does not already exist):  <!-- KW: Is this done in VS terminal or similar? -->
+1. Create a `tools` directory in your home folder (if it does not already exist):  <!-- KW: Is this done in VS terminal or similar? BU: yes, my understanding is that this can be done in any terminal-->
 	```bash
 	mkdir ~/tools
 	cd ~/tools
@@ -96,12 +98,15 @@ https://www.anaconda.com/download/success
 	source ~/miniconda3/etc/profile.d/conda.sh
 	~/miniconda3/bin/conda init bash
 	```
-	Log out and log in again after the installation. <!-- KW: Login/out of the cluter? -->
+	Log out and log in again after the installation. <!-- KW: Login/out of the cluter? BU: I'm honestly not sure... -->
 </details>
 
 #### 3.2.2 Clone the MLEE repository
 
-You only need to clone the repository once. If you intend to run MLEE on the cluster, the file system is shared across login and compute nodes, so the repository also only needs to be cloned once.
+You only need to clone the repository once for both Windows and macOS as well as Linux and cluster. <!-- BU: this was my general interpretation of the note below that was provided in the original readme -->
+
+> **Linux/cluster Note:** if you intend to run MLEE on the cluster, the file system is shared across login and compute nodes, so the repository also only needs to be cloned once.
+**** 
 
 **Recommended: clone using HTTPS**
 
@@ -263,7 +268,7 @@ Then recreate it by following [3.3.2 Create the environment](#332-create-the-env
 
 
 ### 4.2 Define the input parameters
-Open the **input_parameters.json** file in your preferred code editor. Using the outline of inputs below as a guide and update the file to reflect your dataset and variables.
+Open the **input_parameters.json** file in your preferred code editor. Using the outline of inputs below as a guide, update the file to reflect your dataset and variables.
 
 - ```path_name```: Path to the directory containing the dataset, default: "./data/". <br />
 - ```file_name```: Name of the dataset file <br />
@@ -279,24 +284,24 @@ Open the **input_parameters.json** file in your preferred code editor. Using the
 - ```validation_size```: Float number representing proportion of the dataset used as the validation set. <br />
 - ```feature_stratification```: List of features used for stratified train-test splitting. <br />
 - ```features_to_drop```: List of features to drop after stratification (i.e., used for splitting but not for training). <br />
-- ```imputation_strategy```: String representing the imputation technique to apply, options: "iterative", "mean". <br />
+- ```imputation_strategy```: String representing the imputation technique to apply. Options: "iterative", "mean". <br />
 - ```models```: Dictionary containing the models to evaluate and their corresponding grid of hyperparameters. <br />
 - ```n_boot_iterations```: Integer number of bootstrap iterations performed during model evaluation. <br />
-- ```selection_metric```: String containing the metric used for model selection, options: "accuracy", "precision", "recall", "f1-score". <br />
+- ```selection_metric```: String containing the metric used for model selection. Options: "accuracy", "precision", "recall", "f1-score". <br />
 - ```selection_cutoff```: Float number representing the P-value threshold above which the best-ranked model is automatically selected. <br />
 - ```shap_output_prob```: Boolean indicating the output space of the SHAP values. If `true`, SHAP values are computed in probability space; if `false`, they are computed in log-odds space.
-- ```subset_percentage```: Float number representing the proportion of the dataset to use, (default: 1.0, i.e. the full dataset. <br />
+- ```subset_percentage```: Float number representing the proportion of the dataset to use (default: 1.0, i.e. the full dataset. <br />
 
 ### 4.3 Run the framework
 _Windows and macOS_
 
-After the MLEE environment is activated and you have updated the input parameters file, you can just type the following command to the Command Prompt and run the framework:
+After the MLEE environment is activated and you have updated the input parameters file, you can just type the following command to the Command Prompt to run the framework:
 
 ```
 python main.py
 ```
 
-This will execute the whole pipeline with the input parameters you can define in the input_parameters.json - see [4.2 Define the input parameters](#42-preparing-input-parameters)
+This will execute the whole pipeline with the input parameters you defined in the input_parameters.json - see [4.2 Define the input parameters](#42-preparing-input-parameters)
 
 <details>
 	<summary><em>Linux and cluster</em> </summary>
@@ -314,7 +319,7 @@ ssh user.name@@hpc-submit03gui
 	
 2. The cloning procedure on the cluster is the same as on any device and it is done once - see [3.2.2 Clone the MLEE repository](#322-clone-the-mlee-repository)
 3. Transfer your data csv file to the folder named `data`. In case of confidential data, you should encrypt it e.g. via **7zip**. Each time you log in, you need to extract the data.7z and  delete the input of the `data` folder once you are done to keep it secure.
-4. There are two ways to run the code on the cluster. Either submit a job via a slurm script or request an interactive session/job and run it on the assigned compute node.\
+4. There are two ways to run the code on the cluster. Either submit a job via a slurm script or request an interactive session/job and run it on the assigned compute node.
 	
 	a) Submit a slurm script:
 	
@@ -330,11 +335,11 @@ ssh user.name@@hpc-submit03gui
 
 	b) Request a compute resource on some compute node:
 	
-	by entering this command in the cluster terminal you will get same amount of resource as the sbatch script but also you get an interactive session that helps with 	editing and running the code:
+	by entering this command in the cluster terminal, you will get same amount of resource as the sbatch script but also an interactive session that helps with editing and running the code:
 	```
 	salloc -J N2N_pipeline -c 16 -p cpu_p --qos=cpu_normal --mem=128G -t 1-00:00:00
 	```
-	Once you got to the compute node, you can activate the conda environment via
+	Once you get to the compute node, you can activate the conda environment via
 	```
 	conda activate MLEE
 	```
@@ -344,8 +349,8 @@ ssh user.name@@hpc-submit03gui
 	```
 </details>
 
-### 4.4. Outputs <!-- generally speaking, I think it would be helpful to explain a bit more where to find each of the outputs. It doesn't have to have a lot of detail, but a bit more would be helpful --> <!-- KW: I agree -->
-The result of each run will be saved as **HTML** report within the `reports` folder. Each run is saved in a different folder, where the name contains the timestamp of the run and a unique identifier. Each report will  be also saved as an archived **zip file** for ease of transfer. Also, the outputs are saved in the `output` folder as well as the resources in the `reports` folders under your specific **MLEE** folder. 
+### 4.4. Outputs <!-- generally speaking, I think it would be helpful to explain a bit more where to find each of the outputs. It doesn't have to have a lot of detail, but a bit more would be helpful --> <!-- KW: I agree --> <!-- BU: this is much better! my only remaining question is what is the difference between what content is saved in each folder (i.e., what is saved when a "run" is saved versus an "output" -->
+The result of each run will be saved as **HTML** report within the `reports` folder. Each run is saved in a different folder, where the name contains the timestamp of the run and a unique identifier. Each report is also saved as an archived **zip file** for ease of transfer. Additionally, the outputs are saved in the `output` folder as well as the resources in the `reports` folders under your specific **MLEE** folder. 
 
 ## 5. Contributing
 
