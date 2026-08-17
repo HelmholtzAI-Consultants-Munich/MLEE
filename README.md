@@ -48,14 +48,12 @@ Before setting up the project, ensure you have the following installed:
 
 - **Code editor**: If you do not already have a preferred code editor or IDE, we recommend using **Visual Studio Code (VS Code)**, which can be downloaded here: https://code.visualstudio.com/
 - **Git**: Necessary for cloning the repository. Git be downloaded here: https://git-scm.com/install/
-- **Conda**: We recommend Miniconda, but Anaconda is also supported). We also recommend using **Conda 23.10 or newer**, as newer versions include the `libmamba` dependency solver, which can significantly reduce environment creation time. If you do not have Conda installed, follow the installation instructions below [3.2.1 Install Conda](#321-install-conda). If you already have Conda installed, proceed to [3.2.2 Clone the MLEE repository](#322-Clone-the-MLEE-repository).
+- **Conda**: We recommend Miniconda, but Anaconda is also supported). We also recommend using **Conda 23.10 or newer**, as newer versions include the `libmamba` dependency solver, which can significantly reduce environment creation time. If you do not have Conda installed, follow the installation instructions below [3.2.1 Install Conda](#321-install-conda). If you already have Conda installed (Miniconda or Anaconda, version 23.10 or newer), proceed to [3.2.2 Clone the MLEE repository](#322-Clone-the-MLEE-repository).
 
 
 ### 3.2 Installation  
 
 #### 3.2.1 Install Conda
-
-If you already have **Conda** installed (Miniconda or Anaconda, version 23.10 or newer), you can proceed directly to [3.2.2 Clone the MLEE repository](#322-clone-the-mlee-repository)
 
 _Windows and macOS_
 
