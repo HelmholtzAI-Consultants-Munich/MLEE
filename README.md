@@ -101,9 +101,9 @@ https://www.anaconda.com/download/success
 
 #### 3.2.2 Clone the MLEE repository
 
-You only need to clone the repository once for both Windows and macOS as well as Linux and cluster. <!-- BU: this was my general interpretation of the note below that was provided in the original readme -->
+You only need to clone the repository once.
 
-> **Linux/cluster Note:** if you intend to run MLEE on the cluster, the file system is shared across login and compute nodes, so the repository also only needs to be cloned once.
+> **Note:** This is also true if you intend to run MLEE on the cluster, as the file system is shared across login and compute nodes.
 **** 
 
 **Recommended: clone using HTTPS**
