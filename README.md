@@ -10,6 +10,7 @@ By combining predictive modeling with interpretable ML approaches, MLEE helps re
 If **Git** and **Conda** are already installed, you can start with [2. Quick start](#2-Quick-start). If this is your first time setting up the project or you need to configure Git or Conda, continue with the detailed installation instructions found in [3. Detailed installation instruction](#3-Detailed-installation-instruction)
 
 ## 2. Quick start 
+<!-- NN: We should also consider writing a Quick run section for those having the repo cloned and trying to run an analysis after a while (of course, after checking for updates to pull for example). And I guess it should be on top too-->
 
 If **Git** and **Conda** is already installed, go to your terminal, navigate to the directory where you want to clone the MLEE repository to and run:
 
@@ -23,7 +24,7 @@ conda activate MLEE
 ```
 	
 <details>
-	<summary><em>Linux and cluster</em> <!-- to my knowledge (KW: Nikos or Brooke?? - I guess we should our initials when commenting :-)), this may be the quick start for cluster BU: yes, I believe this is consistent with what was in the readme previously --></summary>
+	<summary><em>Linux and cluster</em></summary>
 
 ```bash
 git clone https://github.com/HelmholtzAI-Consultants-Munich/MLEE.git
@@ -64,7 +65,7 @@ https://www.anaconda.com/download/success
 <details>
 	<summary><em>Linux and cluster</em> </summary>
 
-1. Create a `tools` directory in your home folder (if it does not already exist):  <!-- KW: Is this done in VS terminal or similar? BU: yes, my understanding is that this can be done in any terminal-->
+1. Create a `tools` directory in your home folder (if it does not already exist):  <!-- KW: Is this done in VS terminal or similar? BU: yes, my understanding is that this can be done in any terminal NN: I agree but maybe Dona can later confirm because I am not so familiar with linux-->
 	```bash
 	mkdir ~/tools
 	cd ~/tools
@@ -96,7 +97,7 @@ https://www.anaconda.com/download/success
 	source ~/miniconda3/etc/profile.d/conda.sh
 	~/miniconda3/bin/conda init bash
 	```
-	Log out and log in again after the installation. <!-- KW: Login/out of the cluter? BU: I'm honestly not sure... -->
+	Log out and log in again after the installation. <!-- KW: Login/out of the cluter? BU: I'm honestly not sure... NN: Me neither -->
 </details>
 
 #### 3.2.2 Clone the MLEE repository
@@ -156,15 +157,14 @@ Host github.com
 ### 3.3 Environment setup
 
 #### 3.3.1 Verify the Conda installation
-  Open your code editor (VS Code or similar) and check your Conda version by typing in the terminal (Command Prompt (CMD) terminal recommended):
+  Open your code editor (VS Code or similar) and check your Conda version by typing in the terminal:
 	
 ```bash
 conda --version
 ```
-
-<details>
-	<summary><em>Linux and cluster</em> </summary> 
-</details>
+> **Note:**
+> Windows/macOS: Command Prompt (CMD) is recommended.
+> Linux: Use the default terminal. <!-- NN: Maybe we should check with Dona if this is correct -->
 	
    Conda **23.10 or newer** is recommended. Older versions may use the slower `classic` dependency solver.
 	
@@ -347,7 +347,8 @@ ssh user.name@@hpc-submit03gui
 	```
 </details>
 
-### 4.4. Outputs <!-- generally speaking, I think it would be helpful to explain a bit more where to find each of the outputs. It doesn't have to have a lot of detail, but a bit more would be helpful --> <!-- KW: I agree --> <!-- BU: this is much better! my only remaining question is what is the difference between what content is saved in each folder (i.e., what is saved when a "run" is saved versus an "output" -->
+### 4.4. Outputs 
+<!-- generally speaking, I think it would be helpful to explain a bit more where to find each of the outputs. It doesn't have to have a lot of detail, but a bit more would be helpful --> <!-- KW: I agree --> <!-- BU: this is much better! my only remaining question is what is the difference between what content is saved in each folder (i.e., what is saved when a "run" is saved versus an "output" NN: I will try to fill that info in during the next few days-->
 The result of each run will be saved as **HTML** report within the `reports` folder. Each run is saved in a different folder, where the name contains the timestamp of the run and a unique identifier. Each report is also saved as an archived **zip file** for ease of transfer. Additionally, the outputs are saved in the `output` folder as well as the resources in the `reports` folders under your specific **MLEE** folder. 
 
 ## 5. Contributing
