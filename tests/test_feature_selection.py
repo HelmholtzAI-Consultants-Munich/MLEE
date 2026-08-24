@@ -6,6 +6,7 @@ from src.data_selection import (
     select_features,
     remove_low_variance_features,
     perform_univariate_fs,
+    filter_feature,
 )
 
 
@@ -46,3 +47,25 @@ def test_perform_univariate_fs(sample_data):
     assert all(col in sample_data.columns for col in dropped_features_list)
     assert len(selected_features_list) == 10
     assert len(dropped_features_list) == sample_data.shape[1] - 1 - 10
+
+
+def test_filter_feature_supports_generic_numeric_and_categorical_filters():
+    data = pd.DataFrame(
+        {
+            "age": [20, 25, 30, 35],
+            "sex": ["M", "W", "M", "W"],
+            "bmi": [18.0, 24.0, 31.0, 40.0],
+            "target": [0, 1, 0, 1],
+        }
+    )
+
+    filters = [
+        {"feature": "age", "type": "numeric", "range": [25, 35]},
+        {"feature": "sex", "type": "categorical", "value": "M"},
+    ]
+
+    filtered = filter_feature(data, filters)
+
+    assert filtered.shape[0] == 2
+    assert set(filtered["sex"]) == {"M"}
+    assert set(filtered["age"]) == {30, 35}

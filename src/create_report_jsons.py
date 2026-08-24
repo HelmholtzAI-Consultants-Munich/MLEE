@@ -60,6 +60,9 @@ def create_jsons(
     output_dir: str,
     data: pd.DataFrame,
     parameters: dict,
+    n_instances_before: int,
+    n_instances_after: int,
+    percentage_retained: float,
     X_train: pd.DataFrame,
     X_test: pd.DataFrame,
     X_val: pd.DataFrame,
@@ -113,6 +116,9 @@ def create_jsons(
     dataset = {
         "dimension": data.shape,
         "subset_percentage": parameters["subset_percentage"],
+        "n_instances_before_filtering": n_instances_before,
+        "n_instances_after_filtering": n_instances_after,
+        "percentage_retained": percentage_retained,
     }
 
     write_json(

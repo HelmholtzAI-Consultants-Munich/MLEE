@@ -151,12 +151,41 @@
   <!-- strata analysis  -->
   <section class="section">
     <h1 class="title">Strata Analysis</h1>
-    {% for filter_name, filter_values in parameters.parameters.filters.items() %}
-    <div class="box mb-4">
-    <p>Filter: <strong>{{ filter_name }}</strong></p>
-    <p>Condition: <strong>{{ filter_values[1] }}</strong></p>
-    </div>
+
+    {% for filter_definition in parameters.parameters.filters %}
+      <div class="box mb-4">
+        <p>
+          Filter:
+          <strong>{{ filter_definition["feature"] }}</strong>
+        </p>
+
+        {% if filter_definition["type"] == "numeric" %}
+          <p>
+            {% if filter_definition["range"][0] is none and filter_definition["range"][1] is none %}
+              <strong>Not applied</strong>
+            {% else %}
+              Range:
+              <strong>
+                ({{ filter_definition["range"][0] }}, {{ filter_definition["range"][1] }})
+              </strong>
+            {% endif %}
+          </p>
+            
+          {% elif filter_definition["type"] == "categorical" %}
+            <p>
+              Value:
+              <strong>({{ filter_definition["values"] | join(", ") }})</strong>
+            </p>
+          {% endif %}
+          
+      </div>
     {% endfor %}
+
+    <p>
+      <strong>Instances retained after filtering:</strong>
+      {{ dataset.n_instances_after_filtering }} / {{ dataset.n_instances_before_filtering }}
+      ({{ "%.1f"|format(dataset.percentage_retained) }}%)
+    </p>
   </section>
 
   <!-- model definition -->

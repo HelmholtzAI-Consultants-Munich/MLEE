@@ -1,76 +1,110 @@
 {
     "path_name": "./data/",
-    "file_name": "YOURDATASET.csv",
+    "file_name": "KORAS4condensedTOTRY.csv",
     "columns_to_keep": {
         "num": [
-            "age",
-            "bmi",
-            "pm25",
-            "ndvi"
+            "LTALTERU",
+            "LTEDYRS",
+            "LTPYRS_AI",
+            "LTALKKON",
+            "LTBMI",
+            "LTWHRAT",
+            "LTHHNet",
+            "LTSES",
+            "GC_minc_500_07",
+            "GC_pop_125_07",
+            "gc_colden_acc_02_03_11",
+            "g_t_mean_exp_g_2001",
+            "g_pm25_exp_g_00",
+            "g_pop_d_exp_g_15",
+            "g_bsw_d_exp_g_13",
+            "g_gsc_d_exp_g_00"
         ],
         "cat": [
-            "sex",
-            "study_center",
-            "hypertension"
+            "LCSEX",
+            "LTFAMSTD",
+            "LTCIGREG_SF",
+            "LTAP",
+            "LTWAISTC",
+            "LTMI",
+            "LTSCHL",
+            "LTPHACT",
+            "LTMVHYPE",
+            "LTANTIHY",
+            "LTDMY15",
+            "LTORTGC",
+            "hypert"
         ]
     },
     "binary_columns": [
-            "sex"
-        ],
-    "target": "hypertension",
-    "filters": {
-        "age": ["age", [null, null]],
-        "bmi": ["bmi", [null, null]],
-        "sex": ["sex", null]
-    },
+        "LCSEX",
+        "LTAP",
+        "LTWAISTC",
+        "LTMI",
+        "LTSCHL",
+        "LTPHACT",
+        "LTMVHYPE",
+        "LTANTIHY",
+        "LTORTGC",
+        "hypert"
+    ],
+    "target": "hypert",
+    "filters": [
+        {
+            "feature": "LTALTERU",
+            "type": "numeric",
+            "range": [
+                null,
+                null
+            ]
+        },
+        {
+            "feature": "LTHHNet",
+            "type": "numeric",
+            "range": [
+                null,
+                null
+            ]
+        },
+        {
+            "feature": "LTFAMSTD",
+            "type": "categorical",
+            "values": [3, 4]
+        }
+    ],
     "test_size": 0.2,
     "validation_size": 0.1,
     "feature_stratification": [
-        "sex",
-        "hypertension"
+        "LCSEX",
+        "hypert"
     ],
-    "features_to_drop": ["study_center"],
+    "features_to_drop": [],
     "imputation_strategy": "iterative",
     "models": {
         "RandomForest": {
-            "n_estimators": [200, 500, 1000],
-            "max_depth": [2, 5, 10],
-            "max_features": [2, "sqrt", "log2"],
-            "bootstrap": [true]
-        },
-        "LogisticRegression": {
-            "penalty": ["l1", "l2", "elasticnet", null],
-            "C": [0.1, 1.0, 10.0], "solver": ["saga"],
-            "max_iter": [100, 200, 500],
-            "l1_ratio": [0.2, 0.5, 0.7]
-        },
-        "SVMClassifier": {
-            "kernel": ["linear", "rbf", "sigmoid"],
-            "C": [0.1, 1.0, 10.0],
-            "gamma": ["scale", "auto", 0.1, 1.0]},
-        "KNN": {
-            "n_neighbors": [3, 5, 7, 10],
-            "metric": ["manhattan"]
-        },
-        "XGBoost": {
-            "max_depth": [3, 5, 7],
-            "learning_rate": [0.1, 0.01, 0.001],
-            "n_estimators": [100, 200, 500],
-            "subsample": [0.8, 1.0],
-            "colsample_bytree": [0.8, 1.0],
-            "gamma": [0, 1, 5]
-        },
-        "NeuralNetwork": {
-            "module__num_layers": [1, 2, 3],
-            "module__num_units": [10, 20],
-            "module__dropout": [0.0, 0.1, 0.2],
-            "optimizer__lr": [0.001, 0.01, 0.05], 
-            "optimizer__nesterov": [false, true]
+            "n_estimators": [
+                200,
+                500,
+                1000
+            ],
+            "max_depth": [
+                2,
+                5,
+                10
+            ],
+            "max_features": [
+                2,
+                "sqrt",
+                "log2"
+            ],
+            "bootstrap": [
+                true
+            ]
         }
     },
     "n_boot_iterations": 1000,
     "selection_metric": "accuracy",
     "selection_cutoff": 0.9,
     "shap_output_prob": true,
-    "subset_percentage": 1.0
+    "subset_percentage": 0.1
 }
