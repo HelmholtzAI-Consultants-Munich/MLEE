@@ -6,11 +6,10 @@ MLEE is a publicly available, generalizable, and user-friendly machine learning 
 The MLEE framework integrates data preprocessing, multiple machine learning classifiers, performance evaluation, and model explainability methods. MLEE enables researchers to identify and rank key individual, environmental, and neighborhood-level determinants of binary health outcomes while maintaining reproducibility throughout the process.
 By combining predictive modeling with interpretable ML approaches, MLEE helps researchers explore complex, high-dimensional datasets and uncover important drivers of health outcomes. The framework is designed to complement traditional epidemiological methods and facilitate the use of ML in environmental epidemiology.
 
-
 If **Git** and **Conda** are already installed, you can start with [2. Quick start](#2-Quick-start). If this is your first time setting up the project or you need to configure Git or Conda, continue with the detailed installation instructions found in [3. Detailed installation instruction](#3-Detailed-installation-instruction)
 
 ## 2. Quick start 
-<!-- NN: We should also consider writing a Quick run section for those having the repo cloned and trying to run an analysis after a while (of course, after checking for updates to pull for example). And I guess it should be on top too-->
+<!-- NN: We should also consider writing a 'Quick run' section for those having the repo cloned and trying to run an analysis after a while (of course, after checking for updates to pull for example). And I guess it should be on top too-->
 
 If **Git** and **Conda** is already installed, go to your terminal, navigate to the directory where you want to clone the MLEE repository to and run:
 
@@ -109,8 +108,10 @@ You only need to clone the repository once.
 
 **Recommended: clone using HTTPS**
 
-Navigate to the local directory where you want to store the project (helpful if you have already created a folder there and open it via VS code).
-Then, open a terminal in VS code via the **Toggle Panel** and open a **Command Prompt** (CMD).
+Create a folder locally and open it via VS code.
+> Open your VS code. Navigate to the local directory (via File -> Open folder) where you want to store the project (helpful if you have already ).
+> Then, open a terminal in VS code via the **Toggle Panel** and open a **Command Prompt** (CMD).
+****
 Then, you can run the following commands:
 
 ```bash 
