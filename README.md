@@ -275,15 +275,15 @@ Open the **input_parameters.json** file in your preferred code editor. Using the
 - ```columns_to_keep```: Dictionary containing the list of numerical ("num") and categorical ("cat") columns to retain.  <br />
 - ```binary_columns```: List with categorical features that are binary and do not need to be one hot encoded. <br />
 - ```target```: Name of the target variable, default: "hypertension". <br />
-- ```filters```: Dictionary specifying filters for age, bmi, and sex.
+- ```filters``` (OPTIONAL): Dictionary specifying filters for age, bmi, and sex.
 	- Keys correspond to the feature names.
 	- If not specified, no filtering is applied.
 	- For age and bmi, null is interpreted as 0 (lower bound) or ∞ (upper bound).
 	- Options for sex: "M" or "m" (men), "W" or "w" (women).
 - ```test_size```: Float number representing the proportion of the dataset used as the test set. <br />
 - ```validation_size```: Float number representing proportion of the dataset used as the validation set. <br />
-- ```feature_stratification```: List of features used for stratified train-test splitting. <br />
-- ```features_to_drop```: List of features to drop after stratification (i.e., used for splitting but not for training). <br />
+- ```feature_stratification``` (OPTIONAL): List of features used for stratified train-test splitting. <br />
+- ```features_to_drop``` (OPTIONAL): List of features to drop after stratification (i.e., used for splitting but not for training). <br />
 - ```imputation_strategy```: String representing the imputation technique to apply. Options: "iterative", "mean". <br />
 - ```models```: Dictionary containing the models to evaluate and their corresponding grid of hyperparameters. <br />
 - ```n_boot_iterations```: Integer number of bootstrap iterations performed during model evaluation. <br />
