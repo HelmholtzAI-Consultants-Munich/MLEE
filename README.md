@@ -282,7 +282,7 @@ Open the **input_parameters.json** file in your preferred code editor. Using the
 	- Options for sex: "M" or "m" (men), "W" or "w" (women).
 - ```test_size```: Float number representing the proportion of the dataset used as the test set. <br />
 - ```validation_size```: Float number representing proportion of the dataset used as the validation set. <br />
-- ```feature_stratification``` (OPTIONAL): List of features used for stratified train-test splitting. <br />
+- ```feature_stratification``` (OPTIONAL): List of features used for stratified train-test splitting to allow balanced representations of different subgroups to be evenly represented in the splits. <br />
 - ```features_to_drop``` (OPTIONAL): List of features to drop after stratification (i.e., used for splitting but not for training). <br />
 - ```imputation_strategy```: String representing the imputation technique to apply. Options: "iterative", "mean". <br />
 - ```models```: Dictionary containing the models to evaluate and their corresponding grid of hyperparameters. <br />
