@@ -111,6 +111,7 @@ You only need to clone the repository once.
 Create a folder locally (via File Explorer/ Finder) and open it via VS code.
 > Open your VS code. Navigate to the local directory (via File -> Open folder) where you want to store the project (the folder you have created locally beforehand).
 > Then, open a terminal in VS code via the **Toggle Panel** (Control + J in Windows) and specifically open a **Command Prompt** (CMD) (in VS code too).
+> Before proceeding further, it is good to check the path shown in the terminal.
 ****
 Then, you can run the following commands:
 
