@@ -273,7 +273,7 @@ Open the **input_parameters.json** file in your preferred code editor. Using the
 - ```path_name```: Path to the directory containing the dataset, default: "./data/". <br />
 - ```file_name```: Name of the dataset file <br />
 - ```columns_to_keep```: Dictionary containing the list of numerical ("num") and categorical ("cat") columns to retain.  <br />
-- ```binary_columns```: List with categorical features that are binary and do not need to be one hot encoded. <br />
+- ```binary_columns``` (IF ANY): List with categorical features that are binary and do not need to be one hot encoded. <br />
 - ```target```: Name of the target variable, default: "hypertension". <br />
 - ```filters``` (OPTIONAL): Dictionary specifying filters for age, bmi, and sex.
 	- Keys correspond to the feature names.
