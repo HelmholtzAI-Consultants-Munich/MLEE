@@ -15,14 +15,24 @@
         ]
     },
     "binary_columns": [
-            "sex"
-        ],
+        "sex"
+    ],
     "target": "hypertension",
-    "filters": {
-        "age": ["age", [null, null]],
-        "bmi": ["bmi", [null, null]],
-        "sex": ["sex", null]
-    },
+    "filters": [
+        {
+            "feature": "age",
+            "type": "numeric",
+            "range": [
+                null,
+                null
+            ]
+        },
+        {
+            "feature": "sex",
+            "type": "categorical",
+            "values": [0, 1]
+        }
+    ],
     "test_size": 0.2,
     "validation_size": 0.1,
     "feature_stratification": [

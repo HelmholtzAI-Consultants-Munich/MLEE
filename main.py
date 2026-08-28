@@ -68,9 +68,16 @@ def main():
     )
 
     # Filter data
+    n_instances_before = len(selected_data)
     filtered_data = filter_feature(
         data=selected_data,
         dict_features=get_json_params(parameters, "filters"),
+    )
+    n_instances_after = len(filtered_data)
+    percentage_retained = (
+        (n_instances_after / n_instances_before) * 100
+        if n_instances_before > 0
+        else 0
     )
 
     # Preprocessing
@@ -290,6 +297,9 @@ def main():
         output_dir=output_dir,
         data=data,
         parameters=parameters,
+        n_instances_before=n_instances_before,
+        n_instances_after=n_instances_after,
+        percentage_retained=percentage_retained,
         X_train=X_train,
         X_test=X_test,
         X_val=X_val,
