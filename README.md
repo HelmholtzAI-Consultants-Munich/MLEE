@@ -275,22 +275,22 @@ Open the **input_parameters.json** file in your preferred code editor. Using the
 - ```columns_to_keep```: Dictionary containing the list of numerical ("num") and categorical ("cat") columns to retain.  <br />
 - ```binary_columns``` (IF ANY): List with categorical features that are binary and do not need to be one hot encoded. <br />
 - ```target```: Name of the target variable, default: "hypertension". <br />
-- ```filters``` (OPTIONAL): Dictionary specifying filters for age, bmi, and sex.
+- ```filters``` (OPTIONAL): Dictionary specifying filters to subset data, e.g. based on age, bmi, or sex.
 	- Keys correspond to the feature names.
 	- If not specified, no filtering is applied.
 	- For age and bmi, null is interpreted as 0 (lower bound) or ∞ (upper bound).
 	- Options for sex: "M" or "m" (men), "W" or "w" (women).
-- ```test_size```: Float number representing the proportion of the dataset used as the test set. <br />
-- ```validation_size```: Float number representing proportion of the dataset used as the validation set. <br />
+- ```test_size```: Float number representing the proportion of the dataset used as the test set; default: 0.2. <br />
+- ```validation_size```: Float number representing proportion of the dataset used as the validation set; default: 0.1. <br />
 - ```feature_stratification``` (OPTIONAL): List of features used for stratified train-test splitting to allow balanced representations of different subgroups to be evenly represented in the splits. <br />
 - ```features_to_drop``` (OPTIONAL): List of features to drop after stratification (i.e., used for splitting but not for training). <br />
-- ```imputation_strategy```: String representing the imputation technique to apply. Options: "iterative", "mean". <br />
+- ```imputation_strategy```: String representing the imputation technique to apply. Options: "iterative" (default), "mean". <br />
 - ```models```: Dictionary containing the models to evaluate and their corresponding grid of hyperparameters. <br />
-- ```n_boot_iterations```: Integer number of bootstrap iterations performed during model evaluation. <br />
-- ```selection_metric```: String containing the metric used for model selection. Options: "accuracy", "precision", "recall", "f1-score". <br />
-- ```selection_cutoff```: Float number representing the P-value threshold above which the best-ranked model is automatically selected. <br />
-- ```shap_output_prob```: Boolean indicating the output space of the SHAP values. If `true`, SHAP values are computed in probability space; if `false`, they are computed in log-odds space.
-- ```subset_percentage```: Float number representing the proportion of the dataset to use (default: 1.0, i.e. the full dataset. <br />
+- ```n_boot_iterations```: Integer number of bootstrap iterations performed during model evaluation;  default: 1000. <br />
+- ```selection_metric```: String containing the metric used for model selection. Options: "accuracy" (default), "precision", "recall", "f1-score". <br />
+- ```selection_cutoff```: Float number representing the P-value threshold above which the best-ranked model is automatically selected; default: 0.9. <br />
+- ```shap_output_prob```: Boolean indicating the output space of the SHAP values. If `true` (default), SHAP values are computed in probability space; if `false`, they are computed in log-odds space.
+- ```subset_percentage```: Float number representing the proportion of the dataset to use; default: 1.0, i.e. the full dataset. <br />
 
 ### 4.3 Run the framework
 _Windows and macOS_
