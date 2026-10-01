@@ -274,7 +274,7 @@ Open the **input_parameters.json** file in your preferred code editor. Using the
 - ```file_name```: Name of the dataset file <br />
 - ```columns_to_keep```: Dictionary containing the list of numerical ("num") and categorical ("cat") columns to retain.  <br />
 - ```binary_columns``` (IF ANY): List with categorical features that are binary and do not need to be one hot encoded. <br />
-- ```target```: Name of the target variable, default: "hypertension". <br />
+- ```target```: Name of the target variable (should be coded as 0/1), default: "hypertension". <br />
 - ```filters``` (OPTIONAL): Dictionary specifying filters to subset data, based on numeric or categorical variables.
 - ```test_size```: Float number representing the proportion of the dataset used as the test set; default: 0.2. <br />
 - ```validation_size```: Float number representing proportion of the dataset used as the validation set; default: 0.1. <br />
